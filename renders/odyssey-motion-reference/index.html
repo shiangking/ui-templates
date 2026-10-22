@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en" data-theme="default">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odyssey Theme — with Framer motion DNA (motion-annotated render)</title>
+<!-- Faithful static translation of odyssey-theme @ d191e571 (homepage + hero + FeatureCards)
+     + Framer DNA motion layer from Nuria extraction (spring 100/30 · 100/10, appear-on-scroll).
+     All values from the real theme.css / components. Images load from the upstream demo CDN;
+     motion files referenced from ../../templates/design-system-v1/ (single source of truth). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400..700&family=Lato:wght@400;700&display=swap">
+<link rel="stylesheet" href="../../templates/design-system-v1/motion.css">
+<style>
+/* ===== Odyssey theme tokens — verbatim from src/styles/theme.css ===== */
+:root {
+  --theme-primary: hsl(0, 0%, 0%);
+  --theme-primary-hover: hsl(0, 0%, 20%);
+  --theme-on-primary: #fff;
+  --theme-bg: #fff;
+  --theme-on-bg: #000;
+  --theme-surface-1: #f2f2f2;
+  --theme-on-surface-1: #000;
+  --theme-surface-2: #cce6d0;
+  --theme-on-surface-2: #000;
+  --theme-shape-radius: clamp(1rem, 2rem, 3rem);
+  --theme-button-border-radius: 3rem;
+  --theme-transition: 0.2s ease-in-out;
+  --section-margin: 3rem;
+  --theme-grid-gap: 1rem;
+  --container-max-width: 1440px;
+  --container-max-width-narrow: 960px;
+  --container-padding: 0 1rem;
+  --theme-font-family-serif: 'Roboto Serif', Georgia, Cambria, 'Times New Roman', Times, serif;
+  --theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+  --navbar-height: 72px;
+}
+[data-theme='dark'] {
+  color-scheme: dark;
+  --theme-primary: hsl(0, 0%, 100%);
+  --theme-primary-hover: hsl(0, 0%, 90%);
+  --theme-on-primary: hsl(0, 0%, 0%);
+  --theme-bg: hsl(0, 0%, 2%);
+  --theme-on-bg: hsl(0, 0%, 100%);
+  --theme-surface-1: hsl(0, 0%, 20%);
+  --theme-on-surface-1: hsl(0, 0%, 100%);
+  --theme-surface-2: #203422;
+  --theme-on-surface-2: #ffffff;
+  --theme-shape-radius: 0;
+}
+[data-theme='earth'] {
+  --theme-primary: #2c3e2d;
+  --theme-primary-hover: #395a3b;
+  --theme-on-primary: hsl(0, 0%, 100%);
+  --theme-bg: #eeeff1;
+  --theme-on-bg: #272f27;
+  --theme-surface-1: #e6e4e0;
+  --theme-on-surface-1: #272f27;
+  --theme-surface-2: #c3d9c4;
+  --theme-on-surface-2: #000;
+  --theme-button-border-radius: 0.5rem;
+}
+[data-theme='ocean'] {
+  --theme-primary: #1556ac;
+  --theme-primary-hover: #2569c3;
+  --theme-on-primary: hsl(0, 0%, 100%);
+  --theme-bg: #fafafa;
+  --theme-on-bg: #0c0d0d;
+  --theme-surface-1: #eef1f3;
+  --theme-on-surface-1: #0c0d0d;
+  --theme-surface-2: #072650;
+  --theme-on-surface-2: #ffffff;
+}
+[data-theme='sand'] {
+  --theme-primary: #e38a20;
+  --theme-primary-hover: #eb870f;
+  --theme-on-primary: hsl(0, 0%, 100%);
+  --theme-bg: #fffffe;
+  --theme-on-bg: #5e4536;
+  --theme-surface-1: #ffecd9;
+  --theme-on-surface-1: #5e4536;
+  --theme-surface-2: #6a4d34;
+  --theme-on-surface-2: #ffffff;
+  --theme-button-border-radius: 0.5rem;
+}
+
+/* ===== base (mirrors global.css / typography.css) ===== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--theme-bg); color: var(--theme-on-bg);
+  font-family: var(--theme-font-family-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--theme-font-family-serif); font-weight: 400; letter-spacing: -0.01em; }
+a { color: inherit; }
+.container { max-width: var(--container-max-width); margin-inline: auto; padding: var(--container-padding); }
+
+/* ===== navbar (Odyssey header) ===== */
+.navbar {
+  position: sticky; top: 0; z-index: 40; height: var(--navbar-height);
+  background: color-mix(in srgb, var(--theme-bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--theme-on-bg) 8%, transparent);
+  transition: background-color 0.3s ease;
+}
+.navbar-inner { max-width: var(--container-max-width); margin-inline: auto; height: 100%;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
+.logo { font-family: var(--theme-font-family-serif); font-size: 22px; text-decoration: none; font-weight: 500; }
+.nav-links { display: flex; gap: 1.5rem; align-items: center; }
+.nav-links a { text-decoration: none; font-size: 15px; opacity: .85; transition: opacity var(--theme-transition); }
+.nav-links a:hover { opacity: 1; }
+
+/* ===== theme switcher (Odyssey native component) ===== */
+.theme-switcher { display: flex; gap: 6px; align-items: center; }
+.theme-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+  transition: transform var(--theme-transition), border-color var(--theme-transition); padding: 0; }
+.theme-dot:hover { transform: scale(1.15); }
+.theme-dot.on { border-color: var(--theme-on-bg); }
+.theme-dot.default { background: #fff; box-shadow: inset 0 0 0 1px #ddd; }
+.theme-dot.dark { background: #111; }
+.theme-dot.earth { background: #2c3e2d; }
+.theme-dot.ocean { background: #1556ac; }
+.theme-dot.sand { background: #e38a20; }
+
+/* ===== scroll progress rail (new, Framer-style scroll-linked) ===== */
+.scroll-rail { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; }
+.scroll-rail i { display: block; height: 100%; background: var(--theme-primary);
+  transform: scaleX(var(--sp, 0)); transform-origin: left; }
+
+/* ===== buttons (Odyssey Button: pill, elevated default) ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--theme-button-border-radius); border: none;
+  background: var(--theme-primary); color: var(--theme-on-primary);
+  font-family: var(--theme-font-family-sans); font-size: 15px; font-weight: 700;
+  text-decoration: none; cursor: pointer;
+  transition: background-color var(--theme-transition), transform var(--theme-transition), border-radius 0.3s ease;
+}
+.btn:hover { background: var(--theme-primary-hover); }
+.btn.unelevated { background: transparent; color: var(--theme-on-bg); border: 1px solid color-mix(in srgb, var(--theme-on-bg) 25%, transparent); }
+.btn.unelevated:hover { background: color-mix(in srgb, var(--theme-on-bg) 6%, transparent); }
+
+/* ===== hero (HomeHeroSection: 1fr 1fr grid, min-height clamp) ===== */
+.hero-section { margin: var(--section-margin) auto;
+  min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 1rem; }
+.hero-text { justify-self: center; max-width: 25rem; }
+.hero-text h1 { font-size: clamp(40px, 5vw, 56px); line-height: 1.1; margin: 0 0 16px; }
+.hero-text > p { font-size: 17px; line-height: 1.6; opacity: .8; margin: 0 0 28px; }
+.hero-btns { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.hero-image { position: relative; }
+.hero-image img { width: 100%; height: auto; border-radius: var(--theme-shape-radius);
+  box-shadow: 0 1rem 2.5rem rgba(0,0,0,.12); transition: border-radius 0.3s ease; }
+
+/* ===== feature-card sections (homepage structure verbatim) ===== */
+.fc-section { margin: var(--section-margin) auto; }
+.fc-section h2 { font-size: clamp(28px, 3vw, 36px); margin: 0 0 8px; }
+.fc-section > p { opacity: .75; margin: 0 0 24px; max-width: 640px; }
+.fc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--theme-grid-gap); }
+.fc-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+/* FeatureCard — verbatim structure + motion layer */
+.fc-card { background: var(--theme-surface-1); color: var(--theme-on-surface-1);
+  border-radius: var(--theme-shape-radius); overflow: hidden;
+  transition: background-color 0.3s ease, border-radius 0.3s ease, transform 0.28s cubic-bezier(0.22,1,0.36,1), box-shadow 0.28s ease; }
+a.fc-link { display: block; text-decoration: none; }
+.fc-content { padding: 1rem 1rem 0; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
+.fc-title { font-family: var(--theme-font-family-sans); font-weight: 700; margin: 0 0 8px; }
+.fc-img { --image-shadow: 0 -0.5rem 1rem rgba(138,138,138,0.12);
+  margin: 0 auto; width: clamp(60%, 70%, 390px); height: auto; object-fit: cover;
+  box-shadow: var(--image-shadow); transform: translateY(0.5rem);
+  transition: transform var(--theme-transition), transform 0.28s cubic-bezier(0.22,1,0.36,1); }
+/* original hover + enhanced Framer-DNA lift */
+.fc-card:hover .fc-img { transform: translateY(0); }
+.fc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px -12px rgba(0,0,0,.18); }
+.fc-card:active { transform: translateY(-1px); }
+
+/* ===== footer (Odyssey footer style) ===== */
+.footer { border-top: 1px solid color-mix(in srgb, var(--theme-on-bg) 10%, transparent);
+  margin-top: var(--section-margin); padding: 40px 0 64px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+.footer small { opacity: .6; }
+
+/* ===== curtain reveal (Framer DNA: spring slide-up) ===== */
+.curtain { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.curtain > .line { display: block; transform: translateY(112%);
+  transition: transform 0.72s cubic-bezier(0.22,1,0.36,1); transition-delay: var(--line-delay, 0ms); }
+.curtain.revealed > .line { transform: none; }
+.curtain > .line:nth-child(2) { --line-delay: 90ms; }
+.curtain > .line:nth-child(3) { --line-delay: 180ms; }
+
+/* hero image entrance: scale 0.94 -> 1 on soft spring */
+.hero-image[data-reveal] { transform: scale(0.94); opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.22,1,0.36,1), opacity 0.7s ease-out; }
+.hero-image[data-reveal].revealed { transform: none; opacity: 1; }
+
+@media (max-width: 900px) {
+  .hero-section { grid-template-columns: 1fr; min-height: auto; padding: 48px 0; }
+  .fc-grid, .fc-grid.three { grid-template-columns: 1fr; }
+  .nav-links a.hide-m { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .curtain > .line { transform: none; transition: none; }
+  .hero-image[data-reveal] { transform: none; opacity: 1; transition: none; }
+  .fc-card:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-rail"><i></i></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="#">Odyssey</a>
+    <nav class="nav-links">
+      <a href="#" class="hide-m">Landing Pages</a>
+      <a href="#" class="hide-m">About</a>
+      <a href="#" class="hide-m">Blog</a>
+      <a href="#" class="hide-m">Contact</a>
+      <div class="theme-switcher" title="Odyssey theme switcher">
+        <button class="theme-dot default on" data-set="default" aria-label="Default theme"></button>
+        <button class="theme-dot dark" data-set="dark" aria-label="Dark theme"></button>
+        <button class="theme-dot earth" data-set="earth" aria-label="Earth theme"></button>
+        <button class="theme-dot ocean" data-set="ocean" aria-label="Ocean theme"></button>
+        <button class="theme-dot sand" data-set="sand" aria-label="Sand theme"></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1 class="curtain" data-curtain><span class="line">Welcome to</span><span class="line">Odyssey</span></h1>
+      <p data-reveal="up" class="m-delay-1" style="opacity:0">A marketing website theme built with Astro and carefully crafted for startups and businesses.</p>
+      <div class="hero-btns m-delay-2" data-reveal="up" style="opacity:0">
+        <a class="btn" href="#pages">Get Started →</a>
+        <a class="btn unelevated" href="#pages">Style Guide</a>
+      </div>
+    </div>
+    <div class="hero-image" data-reveal>
+      <img src="https://odyssey-theme.sapling.supply/assets/images/home/classic-hero.jpg" alt="Odyssey classic hero" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#cce6d0,#f2f2f2)';this.parentElement.style.borderRadius='var(--theme-shape-radius)';this.parentElement.style.minHeight='320px'">
+    </div>
+  </section>
+
+  <!-- LANDING PAGES (2 cards) -->
+  <section class="fc-section" id="pages">
+    <h2 data-reveal="up" style="opacity:0">Landing Pages</h2>
+    <p data-reveal="up" class="m-delay-1" style="opacity:0">Use one of our landing pages to jumpstart your website or ad campaign.</p>
+    <div class="fc-grid" data-stagger="1">
+      <div class="fc-card" data-reveal="up" style="opacity:0">
+        <a class="fc-link" href="#" onclick="return false">
+          <div class="fc-content">
+            <h3 class="fc-title">Landing Page 1</h3>
+            <img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/landing-1.webp" alt="Landing Page 1" loading="lazy" width="780" height="585" decoding="async">
+          </div>
+        </a>
+      </div>
+      <div class="fc-card" data-reveal="up" style="opacity:0">
+        <a class="fc-link" href="#" onclick="return false">
+          <div class="fc-content">
+            <h3 class="fc-title">Landing Page 2</h3>
+            <img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/landing-2.webp" alt="Landing Page 2" loading="lazy" width="780" height="585" decoding="async">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY PAGES (5 cards) -->
+  <section class="fc-section">
+    <h2 data-reveal="up" style="opacity:0">Company Pages</h2>
+    <p data-reveal="up" class="m-delay-1" style="opacity:0">Use one of our prebuilt company pages for your about page, contact page, legal pages, blog posts, etc.</p>
+    <div class="fc-grid three" data-stagger="1">
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">About Page</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/about.webp" alt="About Page" loading="lazy" width="780" height="585"></div></a></div>
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Contact Page</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/contact.webp" alt="Contact Page" loading="lazy" width="780" height="585"></div></a></div>
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Blog Page</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/blog.webp" alt="Blog Page" loading="lazy" width="780" height="585"></div></a></div>
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Blog Post</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/blog-post.webp" alt="Blog Post" loading="lazy" width="780" height="585"></div></a></div>
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Legal Page</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/legal.webp" alt="Legal Page" loading="lazy" width="780" height="585"></div></a></div>
+    </div>
+  </section>
+
+  <!-- THEME PAGES (2 cards) -->
+  <section class="fc-section">
+    <h2 data-reveal="up" style="opacity:0">Theme Pages</h2>
+    <p data-reveal="up" class="m-delay-1" style="opacity:0">Learn more about how to set up and use the Odyssey Theme.</p>
+    <div class="fc-grid" data-stagger="1">
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Get Started</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/get-started.webp" alt="Get Started" loading="lazy" width="780" height="585"></div></a></div>
+      <div class="fc-card" data-reveal="up" style="opacity:0"><a class="fc-link" href="#" onclick="return false"><div class="fc-content"><h3 class="fc-title">Style Guide</h3><img class="fc-img" src="https://odyssey-theme.sapling.supply/assets/images/home/screenshots/style-guide.webp" alt="Style Guide" loading="lazy" width="780" height="585"></div></a></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="logo" href="#">Odyssey</a>
+      <small>Odyssey Theme by Jaydan Urwin · MIT · rendered from pinned source d191e571 with motion annotation</small>
+    </div>
+  </footer>
+
+</main>
+
+<script src="../../templates/design-system-v1/motion.js"></script>
+<script>
+// theme switcher (Odyssey native behavior) — swaps data-theme, CSS vars cascade
+document.querySelectorAll(".theme-dot").forEach(function (d) {
+  d.addEventListener("click", function () {
+    document.documentElement.setAttribute("data-theme", d.dataset.set);
+    document.querySelectorAll(".theme-dot").forEach(function (x) { x.classList.remove("on"); });
+    d.classList.add("on");
+  });
+});
+// scroll progress rail (scroll-linked, Framer-style)
+(function () {
+  var rail = document.querySelector(".scroll-rail i");
+  function upd() {
+    var h = document.documentElement;
+    var p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    rail.style.setProperty("--sp", p.toFixed(4));
+    rail.style.transform = "scaleX(" + p.toFixed(4) + ")";
+  }
+  addEventListener("scroll", upd, { passive: true }); upd();
+})();
+</script>
+</body>
+</html>

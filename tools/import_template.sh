@@ -14,8 +14,12 @@ REPO_RAW="https://raw.githubusercontent.com/shiangking/ui-templates/main"
 
 if [[ "${1:-}" == "--list" || -z "${1:-}" ]]; then
   echo "Available templates:"
-  curl -fsSL "$REPO_RAW/registry.json" \
-    | python3 -c 'import json,sys; r=json.load(sys.stdin); [print(f"  {t[\"id\"]:<22} {t[\"title\"]}") for t in r["templates"]]'
+  curl -fsSL "$REPO_RAW/registry.json" | python3 -c '
+import json, sys
+r = json.load(sys.stdin)
+for t in r["templates"]:
+    print("  %-22s %s" % (t["id"], t["title"]))
+'
   exit 0
 fi
 
@@ -25,16 +29,28 @@ BASE="$REPO_RAW/templates/$TPL_ID"
 
 MANIFEST=$(curl -fsSL "$BASE/manifest.json") || { echo "error: template '$TPL_ID' not found (try --list)" >&2; exit 1; }
 
-echo "$MANIFEST" | python3 -c 'import json,sys; m=json.load(sys.stdin); print(f"importing {m[\"id\"]} v{m[\"version\"]} ({m[\"license\"]}) -> {len(m[\"files\"])} files")'
+echo "$MANIFEST" | python3 -c '
+import json, sys
+m = json.load(sys.stdin)
+print("importing %s v%s (%s)" % (m["id"], m["version"], m["license"]))
+'
 
 mkdir -p "$DEST"
-FILES=$(echo "$MANIFEST" | python3 -c 'import json,sys; print("\n".join(json.load(sys.stdin)["files"]))')
-while IFS= read -r f; do
+echo "$MANIFEST" | python3 -c '
+import json, sys
+for f in json.load(sys.stdin)["files"]:
+    print(f)
+' | while IFS= read -r f; do
   mkdir -p "$DEST/$(dirname "$f")"
   curl -fsSL "$BASE/$f" -o "$DEST/$f"
   echo "  ok: $f"
-done <<< "$FILES"
+done
 
+cp "$DEST/manifest.json" "$DEST/manifest.json" 2>/dev/null || true
 echo "$MANIFEST" > "$DEST/manifest.json"
-echo "imported -> $DEST (entry: $(echo "$MANIFEST" | python3 -c 'import json,sys; print(json.load(sys.stdin)["entry"])'))"
+ENTRY=$(echo "$MANIFEST" | python3 -c '
+import json, sys
+print(json.load(sys.stdin)["entry"])
+')
+echo "imported -> $DEST (entry: $ENTRY)"
 echo "reminder: adapt, do not reinvent; preserve tokens, components, responsive + a11y behavior."

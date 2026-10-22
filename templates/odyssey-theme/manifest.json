@@ -1,0 +1,29 @@
+{
+  "id": "odyssey-theme",
+  "version": "3.1.0",
+  "title": "Odyssey Theme — Astro startup/marketing theme",
+  "license": "MIT (upstream: Copyright (c) 2024 Treefarm Studio LLC)",
+  "source": "https://github.com/treefarmstudio/odyssey-theme pinned at d191e5715a2519e25be4629b933189c421b30a1a",
+  "framework": "astro",
+  "import": { "mode": "external-git", "repo": "https://github.com/treefarmstudio/odyssey-theme.git", "sha": "d191e5715a2519e25be4629b933189c421b30a1a", "path": "." },
+  "dependencies": [ "astro (see upstream package.json)" ],
+  "entry": "src/pages/index.astro",
+  "use_when": "startup marketing sites, blogs, docs-adjacent landing pages with theme system (light/dark)",
+  "notes": "Build-step project (npm). Includes ~11MB of fonts/images — clone is shallow at pinned SHA. Do not run template scripts outside an isolated environment; install deps only with explicit exec approval.",
+  "tokens": {
+    "note": "tokens live in src/styles/ and src/config/ upstream — read them at analysis time; do not hardcode here"
+  },
+  "components": {
+    "buttons": "src/components/buttons/Button.astro",
+    "cards": "src/components/cards/FeatureCard.astro",
+    "blog": "BlogPostPreview / BlogPostsList components",
+    "pages": "index, 404, blog, company, landing-pages, theme"
+  },
+  "usability_rules": [ "keep Astro component contracts", "preserve theme config structure (src/config)" ],
+  "files": [],
+  "conformance_checks": {
+    "required_components": [ "src/components/buttons/Button.astro", "src/components/cards/FeatureCard.astro", "src/layouts", "src/pages/index.astro" ],
+    "token_keys": [],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

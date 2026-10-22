@@ -1,0 +1,34 @@
+{
+  "id": "fimbo-portfolio-1",
+  "version": "1.0.0",
+  "title": "Fimbo Portfolio 1 — One-page gradient portfolio",
+  "license": "MIT (upstream: Copyright (c) 2019 @imfunniee)",
+  "source": "https://github.com/imfunniee/fimbo (dir: 1) pinned at 2297bec6ff077bea44a61c91793bc33f614c6e43",
+  "framework": "vanilla-html-css-js",
+  "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "1" },
+  "dependencies": [],
+  "entry": "index.html",
+  "use_when": "personal one-page portfolios, single-screen intro with project cards and contact form",
+  "notes": "Upstream loads Google Fonts (Comfortaa) from CDN — self-host or swap to a system stack if the no-external-requests conformance rule is enforced.",
+  "tokens": {
+    "color_accent_gradient": "linear-gradient #FF4B2B → #FF416C",
+    "color_bg": "#000000",
+    "color_text": "#ffffff",
+    "font_family": "'Comfortaa', cursive",
+    "radius_button": "50px",
+    "radius_circle": "50%"
+  },
+  "components": {
+    "btn_one": "gradient pill button",
+    "btn_two": "secondary button",
+    "project": "project card block",
+    "contact_form": "inline contact form"
+  },
+  "usability_rules": [ "keep upstream animations intact unless replaced", "preserve single-screen scroll structure" ],
+  "files": [],
+  "conformance_checks": {
+    "required_components": [ ".project", ".btn_one", "form" ],
+    "token_keys": [ "color_accent_gradient", "color_bg", "font_family", "radius_button" ],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "design_source": "figma-startup-kit",
+  "figma": {
+    "file_key": "mY677LINqg7qav8YDIwQSs",
+    "linked_node": "960-1013 (cover; content spans section canvases)",
+    "canvases": [ "Cover", "Navigation", "Hero", "Contents", "Features", "Forms", "Testimonials", "Ecommerce [NEW]", "Call to Action", "Showcase", "Team", "Contacts", "Pricing Tables", "Pages", "Footers", "Components" ],
+    "retrieved_at": "2026-10-22",
+    "url": "https://www.figma.com/design/mY677LINqg7qav8YDIwQSs/Free-Figma-Website-Landing-Pages---Startup-App--Community-?node-id=960-1013"
+  },
+  "tokens": {
+    "colors": {
+      "bg_dark": "#2F1893",
+      "bg_light": "#FFFFFF",
+      "heading": "#1E0E62",
+      "text_on_dark": "#FFFFFF",
+      "action_primary": "#25DAC5"
+    },
+    "layout": { "section_width": "1400px", "ecommerce_width": "1600px", "canvas_count": 16, "section_frame_count": "~150" }
+  },
+  "section_catalog": {
+    "Navigation": "26 variants, dark + light",
+    "Hero": "22 variants, dark + light, headline + subcopy + dual CTA patterns",
+    "Contents": "34 variants, feature/content blocks",
+    "Features": "47 variants, grid + list + split layouts",
+    "Forms": "16 variants, signup/contact/newsletter, dark + light",
+    "Testimonials": "6 variants",
+    "Ecommerce [NEW]": "40 variants at 1600px, product grid/detail/cart patterns",
+    "Call to Action": "32 variants",
+    "Showcase": "10 variants, large media blocks",
+    "Team": "5 variants",
+    "Contacts": "10 variants",
+    "Pricing Tables": "7 variants",
+    "Footers": "13 variants",
+    "Pages": "2 full composed pages (page_1, page_2) as composition references"
+  },
+  "component_catalog": [ "Logo", "Button (variants)", "Paginators", "Input Field", "Text Area", "Dropdowns", "Badges", "Switchers", "Selector", "Checkbox", "Radiobutton", "Testimonials" ],
+  "usage": "Compose product pages by picking sections from the catalog, keeping the shared token system. Full composed Pages (153:80, 153:184) show canonical section ordering. Implement on top of an approved code template's structure and verify with the standard conformance checks."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "fimbo-portfolio-3",
+  "version": "1.0.0",
+  "title": "Fimbo Portfolio 3 — Multi-section with particles",
+  "license": "MIT (upstream: Copyright (c) 2019 @imfunniee)",
+  "source": "https://github.com/imfunniee/fimbo (dir: 3) pinned at 2297bec6ff077bea44a61c91793bc33f614c6e43",
+  "framework": "vanilla-html-css-js",
+  "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "3" },
+  "dependencies": [ "particles.js (bundled upstream: particles.js + app.js)" ],
+  "entry": "index.html",
+  "use_when": "multi-section portfolio with animated box transitions and particle background",
+  "notes": "Upstream loads Google Fonts (Josefin Sans, Poppins) from CDN; particles.js is bundled — never fetch it from a CDN.",
+  "tokens": {
+    "color_primary": "#FF3232",
+    "color_bg": "#ffffff",
+    "color_text": "#ffffff",
+    "font_family_heading": "'Josefin Sans', sans-serif",
+    "font_family_body": "'Poppins', sans-serif",
+    "radius_button": "80px",
+    "radius_section": "0px 0px 100px 100px"
+  },
+  "components": {
+    "box1": "wide animated section",
+    "box2": "standard animated section",
+    "social": "social link row",
+    "particles_bg": "particles.js background canvas"
+  },
+  "usability_rules": [ "preserve box transition animations", "respect prefers-reduced-motion for particles" ],
+  "files": [],
+  "conformance_checks": {
+    "required_components": [ ".box1", ".box2", ".social" ],
+    "token_keys": [ "color_primary", "font_family_heading", "radius_button", "radius_section" ],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

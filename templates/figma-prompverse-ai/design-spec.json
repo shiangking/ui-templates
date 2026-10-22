@@ -1,0 +1,47 @@
+{
+  "design_source": "figma-prompverse-ai",
+  "figma": {
+    "file_key": "SXE8QhlOMGq3d5GRINPsfm",
+    "node": "1-7067",
+    "canvas": "DESIGN",
+    "retrieved_at": "2026-10-22",
+    "url": "https://www.figma.com/design/SXE8QhlOMGq3d5GRINPsfm/Prompverse-AI---AI-Landing-page-%7C-Modern-Landing-Page-%7C-Minimal-Landing-Page--Community-?node-id=1-7067"
+  },
+  "tokens": {
+    "colors": {
+      "bg": "#000000",
+      "surface": "#0E0E0E",
+      "text": "#FFFFFF",
+      "text_muted": "rgba(255,255,255,0.6)",
+      "text_faint": "rgba(255,255,255,0.4)",
+      "accent": "#1D73F3",
+      "border_subtle": "rgba(255,255,255,0.2)",
+      "btn_text_on_light": "#000000"
+    },
+    "typography": {
+      "heading": { "family": "Manrope", "weights": [500, 600], "h1": "64px/74px ls-0.01em", "h2": "48px/56px", "h3": "36px/50px", "nav": "22px Manrope 500" },
+      "body": { "family": "Poppins", "weights": [400, 500], "body": "16px/28.8px", "small": "14px/1.4em", "tiny": "12px/1.3em", "chip": "18.18px ls-0.01em" }
+    },
+    "radius": { "pill": "55px", "card": "7.27px ~ 8px", "gallery_block": "5.45px ~ 6px" },
+    "effects": { "glass_nav": "backdrop-blur, bg rgba(5,5,5,0.01), bottom border rgba(255,255,255,0.2)", "hero_glow": "white radial blur(312px) behind hero", "footer_glow": "white radial blur(468px)" }
+  },
+  "components_inventory": {
+    "Button": [ "Start Generating (ghost pill + wand icon)", "Download (solid white pill + arrow)", "Generate now (solid pill)", "Get Started (solid pill)" ],
+    "Gallery": "& Gallery — surface card, padding ~44px, image grid with aspect-ratio blocks",
+    "AspectRatioBlock": "1:1 blocks, image fills, 6px radius",
+    "endless_scroll": "3 rows x 8 chips, 'Write a attractive hero title for …' prompt pattern with arrow icon",
+    "Card": "component set 1:1131",
+    "footer_columns": [ "Navigation (2 lists)", "Contact us (phones + email)", "Follow us (social circles 50px)", "Let's chat (messenger icons)", "Location" ]
+  },
+  "sections_inventory": [
+    { "name": "navbar", "specs": "16px 306px padding, logo left, 4+3 links, solid pill CTA" },
+    { "name": "hero", "specs": "badge 'Promptverse AI' 22px, H1 64px two-line, subcopy 16px/28px muted, ghost + solid buttons, stars + glow" },
+    { "name": "trending prompts", "specs": "H2 48px center + muted paragraph + dual buttons + large SVG illustration" },
+    { "name": "image gallery", "specs": "'Images like never seen before' + & Gallery grid, 2-col aspect blocks" },
+    { "name": "audio & music", "specs": "H2 + left copy 36px + feature chips + right image stack" },
+    { "name": "endless scroll", "specs": "3 marquee rows of prompt chips, 114px rows, gap 30px" },
+    { "name": "final CTA", "specs": "H2 48px/74px center + solid pill 'Create an Account' + border vectors" },
+    { "name": "footer", "specs": "48px 64px padding, 2-col groups, social circles, locale switcher En/Es, (c) 2024" }
+  ],
+  "usage": "Translate into HTML/CSS/JS or framework components on top of an approved code template's structure. Replace upstream AI art with licensed assets. Self-host fonts."
+}

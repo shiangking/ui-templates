@@ -1,0 +1,32 @@
+{
+  "id": "fimbo-portfolio-2",
+  "version": "1.0.0",
+  "title": "Fimbo Portfolio 2 — Header + social one-pager",
+  "license": "MIT (upstream: Copyright (c) 2019 @imfunniee)",
+  "source": "https://github.com/imfunniee/fimbo (dir: 2) pinned at 2297bec6ff077bea44a61c91793bc33f614c6e43",
+  "framework": "vanilla-html-css-js",
+  "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "2" },
+  "dependencies": [],
+  "entry": "index.html",
+  "use_when": "bold single-color personal portfolio with animated header and social links",
+  "notes": "Upstream loads Google Fonts (Poppins) from CDN and uses CSS animation library classes — preserve or self-host.",
+  "tokens": {
+    "color_primary": "#FF2C5A",
+    "color_bg": "#ffffff",
+    "color_text": "#000000",
+    "font_family": "'Poppins', sans-serif",
+    "radius_circle": "50%"
+  },
+  "components": {
+    "header": "#header with slideInDown animation",
+    "btn_one": "primary pink button",
+    "social": "social link row"
+  },
+  "usability_rules": [ "preserve header entrance animation", "keep social links >= 40px hit area" ],
+  "files": [],
+  "conformance_checks": {
+    "required_components": [ "#header", ".btn_one", ".social" ],
+    "token_keys": [ "color_primary", "color_bg", "font_family" ],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

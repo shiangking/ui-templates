@@ -1,0 +1,46 @@
+{
+  "id": "figma-prompverse-ai",
+  "version": "1.0.0",
+  "title": "Prompverse AI — dark AI landing page (Figma design source)",
+  "license": "Figma Community file (free to duplicate; verify author terms before commercial reuse)",
+  "source": "Figma file SXE8QhlOMGq3d5GRINPsfm, canvas node 1-7067 (DESIGN), extracted 2026-10-22 via Figma API",
+  "framework": "figma-design-source",
+  "import": { "mode": "vendored" },
+  "dependencies": [],
+  "entry": "design-spec.json",
+  "use_when": "AI/creator-product landing pages with dark futuristic aesthetic, prompt galleries, audio features",
+  "notes": "Design source, not code: agents translate design-spec.json into components on a vanilla or framework base, reusing an approved code template's structure. Images referenced in the Figma file are upstream AI art — replace with product-owned or licensed assets.",
+  "tokens": {
+    "color_bg": "#000000",
+    "color_surface": "#0E0E0E",
+    "color_text": "#FFFFFF",
+    "color_text_muted": "rgba(255,255,255,0.6)",
+    "color_accent": "#1D73F3",
+    "color_border_subtle": "rgba(255,255,255,0.2)",
+    "font_family_heading": "Manrope, sans-serif (Medium/SemiBold)",
+    "font_family_body": "Poppins, sans-serif",
+    "font_size_h1": "64px / lh 74px / ls -0.01em",
+    "font_size_h2": "48px / lh 56px",
+    "font_size_body": "16px / lh 28.8px",
+    "radius_pill": "55px",
+    "radius_card": "8px",
+    "button_padding": "14px 34px",
+    "glow": "large blurred white radial accents behind hero"
+  },
+  "components": {
+    "navbar": "blurred glass bar: logo left, nav links split, pill CTA right",
+    "hero": "badge + 64px H1 + muted subcopy + dual pill buttons + star particles + glow",
+    "gallery_card": "#0E0E0E card, 8px radius, image grid with aspect-ratio blocks",
+    "chip": "1px white/20 border pill, 14px padding",
+    "endless_scroll": "3-row marquee of prompt chips",
+    "footer": "4-column: nav, contact, social, locale + copyright"
+  },
+  "sections": [ "navbar", "hero", "trending prompts", "image gallery", "audio & music features", "endless prompt scroll", "final CTA", "footer" ],
+  "usability_rules": [ "maintain 4.5:1 contrast when substituting fonts", "preserve pill button geometry", "no external font CDN — self-host Manrope/Poppins or swap to system stack" ],
+  "files": [ "design-spec.json", "manifest.json" ],
+  "conformance_checks": {
+    "required_components": [ ".site-nav", ".hero", ".gallery-card", ".chip", ".site-footer" ],
+    "token_keys": [ "color_bg", "color_surface", "color_text", "color_accent", "radius_pill" ],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

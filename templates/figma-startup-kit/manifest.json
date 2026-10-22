@@ -1,0 +1,41 @@
+{
+  "id": "figma-startup-kit",
+  "version": "1.0.0",
+  "title": "Startup Landing Kit — purple/teal section library (Figma design source)",
+  "license": "Figma Community file (free to duplicate; verify author terms before commercial reuse)",
+  "source": "Figma file mY677LINqg7qav8YDIwQSs (shared token system: Startup design framework), extracted 2026-10-22 via Figma API. Linked node 960-1013 is the cover page; content spans the file's section canvases.",
+  "framework": "figma-design-source",
+  "import": { "mode": "vendored" },
+  "dependencies": [],
+  "entry": "design-spec.json",
+  "use_when": "SaaS/startup landing pages assembled from a large catalog of interchangeable pre-designed sections",
+  "notes": "This is a section library (150+ frames), not a single page. Agents pick sections per product needs, keep the shared token system, and compose pages. Fonts in the upstream kit are the classic Startup framework set — confirm and self-host before use.",
+  "tokens": {
+    "color_bg_dark": "#2F1893",
+    "color_bg_light": "#FFFFFF",
+    "color_heading": "#1E0E62",
+    "color_text": "#FFFFFF",
+    "color_action": "#25DAC5",
+    "layout_width": "1400px sections (ecommerce variant 1600px)",
+    "radius": "pill buttons (upstream Startup style), soft cards"
+  },
+  "components": {
+    "Button": "component frame with primary/secondary variants",
+    "Input_Field": "text input + textarea variants",
+    "Dropdowns": "menu component",
+    "Badges": "status badge set",
+    "Switchers": "toggle component",
+    "Selector": "radio/selector component",
+    "Checkbox": "checkbox component",
+    "Logo": "brand mark component",
+    "Paginators": "pagination component"
+  },
+  "sections": [ "navigation (26 variants)", "hero/header (22)", "content (34)", "features (47)", "forms (16)", "testimonials (6)", "ecommerce (40, 1600px)", "call-to-action (32)", "showcase (10)", "team (5)", "contacts (10)", "pricing tables (7)", "footers (13)" ],
+  "usability_rules": [ "compose pages only from this kit's sections", "keep heading color #1E0E62 on light, white on dark", "action color #25DAC5 reserved for primary actions", "maintain 1400px section width discipline (1600px for ecommerce)" ],
+  "files": [ "design-spec.json", "manifest.json" ],
+  "conformance_checks": {
+    "required_components": [ ".nav", ".hero", ".cta", ".footer" ],
+    "token_keys": [ "color_bg_dark", "color_bg_light", "color_heading", "color_action" ],
+    "viewports": [ 375, 768, 1280 ]
+  }
+}

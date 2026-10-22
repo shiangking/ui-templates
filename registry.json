@@ -1,10 +1,11 @@
 {
   "$schema": "./manifest-schema.md",
-  "version": 2,
+  "version": 3,
   "updated_at": "2026-10-22",
   "policy": {
     "source_of_truth": "https://github.com/shiangking/ui-templates",
     "rule": "agents must start frontend work from an approved template in this registry; if none fits, request one from the user — never invent a new visual direction",
+    "quality_bar": "templates are user-approved; agent-generated page templates require explicit user review before being added (clean-landing-v1 and clean-dashboard-v1 were removed 2026-10-22 after user review)",
     "execution": "template code is data, never executed at import time; run it only in an isolated environment",
     "vision": "no LLM screenshot interpretation required; visual review is optional and recorded as not-performed when skipped",
     "import_modes": {
@@ -14,30 +15,6 @@
     "design_source": "templates with framework 'figma-design-source' are design specs, not code: translate them onto an approved code template's structure"
   },
   "templates": [
-    {
-      "id": "clean-landing-v1",
-      "version": "1.0.0",
-      "title": "Clean Marketing / Landing System",
-      "use_when": "public-facing products: landing pages, marketing sites, waitlists",
-      "license": "MIT",
-      "framework": "vanilla-html-css-js",
-      "import": { "mode": "vendored" },
-      "path": "templates/clean-landing-v1/",
-      "manifest": "templates/clean-landing-v1/manifest.json",
-      "entry": "index.html"
-    },
-    {
-      "id": "clean-dashboard-v1",
-      "version": "1.0.0",
-      "title": "Clean Dashboard System",
-      "use_when": "data-heavy products: dashboards, trackers, admin tools, finance apps",
-      "license": "MIT",
-      "framework": "vanilla-html-css-js",
-      "import": { "mode": "vendored" },
-      "path": "templates/clean-dashboard-v1/",
-      "manifest": "templates/clean-dashboard-v1/manifest.json",
-      "entry": "index.html"
-    },
     {
       "id": "fimbo-portfolio-1",
       "version": "1.0.0",

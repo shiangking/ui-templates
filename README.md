@@ -10,15 +10,9 @@ fetchable from any machine, no local copies required.
 3. **No vision dependency.** Visual review is *optional*; when skipped it is recorded `optional-not-performed` — never marked passed. Acceptance rests on deterministic conformance checks.
 4. **Templates are data.** Import is static (files or pinned git clone). Template code runs only in an isolated environment.
 5. **If no template fits, ask.** Request a new template from the user; do not invent a new visual direction.
+6. **Quality bar is human.** Templates enter this library only with user approval; agent-authored page templates must pass explicit user review (two early agent-generated templates were removed on 2026-10-22 for this reason).
 
 ## Templates
-
-### Code templates (vendored in this repo)
-
-| id | use for | framework | entry |
-|---|---|---|---|
-| `clean-landing-v1` | landing pages, marketing sites, waitlists | vanilla html/css/js | [index.html](templates/clean-landing-v1/index.html) |
-| `clean-dashboard-v1` | dashboards, trackers, admin tools | vanilla html/css/js | [index.html](templates/clean-dashboard-v1/index.html) |
 
 ### Code templates (pinned upstream, imported by commit SHA)
 
@@ -46,11 +40,11 @@ These are **design specs, not code** (`design-spec.json`): translate them onto a
 # list what's approved
 curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh | bash -s -- --list
 
-# import a vendored template (downloads manifest + files, executes nothing)
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- clean-landing-v1 ./my-product-ui
-
 # import a pinned upstream template (shallow clone at the pinned SHA)
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- odyssey-theme ./my-site
+
+# import a vendored design-spec
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- figma-startup-kit ./my-spec
 ```
 
 ## Conformance (checked, not judged)

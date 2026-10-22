@@ -1,12 +1,17 @@
 {
   "$schema": "./manifest-schema.md",
-  "version": 1,
+  "version": 2,
   "updated_at": "2026-10-22",
   "policy": {
     "source_of_truth": "https://github.com/shiangking/ui-templates",
     "rule": "agents must start frontend work from an approved template in this registry; if none fits, request one from the user — never invent a new visual direction",
     "execution": "template code is data, never executed at import time; run it only in an isolated environment",
-    "vision": "no LLM screenshot interpretation required; visual review is optional and recorded as not-performed when skipped"
+    "vision": "no LLM screenshot interpretation required; visual review is optional and recorded as not-performed when skipped",
+    "import_modes": {
+      "vendored": "source files live in this repo; importer downloads them directly",
+      "external-git": "template lives upstream; importer shallow-clones the pinned commit SHA and copies the pinned path — byte-identical, no drift"
+    },
+    "design_source": "templates with framework 'figma-design-source' are design specs, not code: translate them onto an approved code template's structure"
   },
   "templates": [
     {
@@ -16,6 +21,7 @@
       "use_when": "public-facing products: landing pages, marketing sites, waitlists",
       "license": "MIT",
       "framework": "vanilla-html-css-js",
+      "import": { "mode": "vendored" },
       "path": "templates/clean-landing-v1/",
       "manifest": "templates/clean-landing-v1/manifest.json",
       "entry": "index.html"
@@ -27,9 +33,78 @@
       "use_when": "data-heavy products: dashboards, trackers, admin tools, finance apps",
       "license": "MIT",
       "framework": "vanilla-html-css-js",
+      "import": { "mode": "vendored" },
       "path": "templates/clean-dashboard-v1/",
       "manifest": "templates/clean-dashboard-v1/manifest.json",
       "entry": "index.html"
+    },
+    {
+      "id": "fimbo-portfolio-1",
+      "version": "1.0.0",
+      "title": "Fimbo Portfolio 1 — One-page gradient portfolio",
+      "use_when": "personal one-page portfolios with project cards and contact form",
+      "license": "MIT (upstream @imfunniee)",
+      "framework": "vanilla-html-css-js",
+      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "1" },
+      "manifest": "templates/fimbo-portfolio-1/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "fimbo-portfolio-2",
+      "version": "1.0.0",
+      "title": "Fimbo Portfolio 2 — Header + social one-pager",
+      "use_when": "bold single-color personal portfolios with animated header",
+      "license": "MIT (upstream @imfunniee)",
+      "framework": "vanilla-html-css-js",
+      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "2" },
+      "manifest": "templates/fimbo-portfolio-2/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "fimbo-portfolio-3",
+      "version": "1.0.0",
+      "title": "Fimbo Portfolio 3 — Multi-section with particles",
+      "use_when": "multi-section portfolios with particle background and box animations",
+      "license": "MIT (upstream @imfunniee)",
+      "framework": "vanilla-html-css-js",
+      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "3" },
+      "manifest": "templates/fimbo-portfolio-3/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "odyssey-theme",
+      "version": "3.1.0",
+      "title": "Odyssey Theme — Astro startup/marketing theme",
+      "use_when": "startup marketing sites and blogs with a full Astro component system",
+      "license": "MIT (upstream Treefarm Studio LLC)",
+      "framework": "astro",
+      "import": { "mode": "external-git", "repo": "https://github.com/treefarmstudio/odyssey-theme.git", "sha": "d191e5715a2519e25be4629b933189c421b30a1a", "path": "." },
+      "manifest": "templates/odyssey-theme/manifest.json",
+      "entry": "src/pages/index.astro"
+    },
+    {
+      "id": "figma-prompverse-ai",
+      "version": "1.0.0",
+      "title": "Prompverse AI — dark AI landing (Figma design source)",
+      "use_when": "AI/creator product landing pages with dark futuristic aesthetic",
+      "license": "Figma Community (verify author terms for commercial reuse)",
+      "framework": "figma-design-source",
+      "import": { "mode": "vendored" },
+      "path": "templates/figma-prompverse-ai/",
+      "manifest": "templates/figma-prompverse-ai/manifest.json",
+      "entry": "design-spec.json"
+    },
+    {
+      "id": "figma-startup-kit",
+      "version": "1.0.0",
+      "title": "Startup Landing Kit — 150-section library (Figma design source)",
+      "use_when": "SaaS/startup pages composed from a large catalog of pre-designed sections",
+      "license": "Figma Community (verify author terms for commercial reuse)",
+      "framework": "figma-design-source",
+      "import": { "mode": "vendored" },
+      "path": "templates/figma-startup-kit/",
+      "manifest": "templates/figma-startup-kit/manifest.json",
+      "entry": "design-spec.json"
     }
   ]
 }

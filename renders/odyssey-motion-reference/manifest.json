@@ -1,0 +1,27 @@
+{
+  "id": "odyssey-motion-reference",
+  "version": "1.0.0",
+  "title": "Odyssey motion reference — odyssey-theme render with Framer-soft motion",
+  "type": "reference-render",
+  "derived_from": {
+    "template_id": "odyssey-theme",
+    "upstream": "https://github.com/treefarmstudio/odyssey-theme",
+    "sha": "d191e5715a2519e25be4629b933189c421b30a1a"
+  },
+  "motion_layer": {
+    "profile": "design-system-v1 / motion.css (Framer soft)",
+    "springs": "spring(100,30,1) soft + spring(100,10,1) bouncy, extracted from Nuria Framer bundle",
+    "annotations": [
+      "hero h1 curtain-masked line reveal",
+      "hero copy + CTAs data-reveal=up with .m-delay stagger",
+      "hero image data-reveal scale 0.94 -> 1 on soft spring",
+      "FeatureCards data-reveal=up + data-stagger (60ms cascade) + spring-lift hover (original image-slide micro-interaction preserved)",
+      "scroll progress rail (scroll-linked)"
+    ]
+  },
+  "theme_switcher": "all 5 Odyssey themes (default/dark/earth/ocean/sand) functional via data-theme attribute swap",
+  "assets_note": "images + fonts load from upstream demo CDN (odyssey-theme.sapling.supply) and Google Fonts; motion files referenced from ../../templates/design-system-v1/ (single source of truth, no duplication)",
+  "usage_rule": "reference implementation showing the annotation pattern (motion.css + data attributes, tokens untouched). Apply the same pattern when adding motion to any approved template. Not a page template.",
+  "user_approval": "user reviewed 2026-10-22: 'this is great, thanks, at least its nicer now'",
+  "license": "MIT (derivative of odyssey-theme; motion layer original work)"
+}

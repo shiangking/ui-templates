@@ -1,0 +1,40 @@
+{
+  "id": "figma-genesis-landing",
+  "version": "1.0.0",
+  "title": "Genesis Landing — agritech soil-intelligence design source",
+  "type": "figma-design-source",
+  "source": {
+    "kind": "figma-community",
+    "file_key": "OGCqpCDbGAUOl6WDPlzVQ3",
+    "url": "https://www.figma.com/design/OGCqpCDbGAUOl6WDPlzVQ3/Genesis-Landing-page--Community-",
+    "extracted": "2026-10-22 via Figma MCP (figma_get_figma_data, node 0-1)"
+  },
+  "token_system": {
+    "font_family": "IBM Plex Sans (400/500/600)",
+    "tracking": "-0.04em display / 0.065em uppercase eyebrows",
+    "palette": {
+      "ink": "#111827",
+      "ink_62": "rgba(17,27,49,0.62)",
+      "sky_gradient": "#BFCFE5 -> #F0F5FF -> #FFFFFF",
+      "glass_border": "rgba(6,20,50,0.18)",
+      "card_border": "rgba(4,28,77,0.11)",
+      "navy_card": "rgba(17,26,44,0.83)",
+      "green_scale": ["#059669", "#24C335", "#4CDC5A", "#BCF6C1", "rgba(76,220,90,0.24)"],
+      "amber": "#FACC15 / #A16207 / rgba(250,204,21,0.24)",
+      "indigo": "#4F46E5 / #EEF2FF"
+    },
+    "radius": {"flag_card": "10px", "science_card": "32px", "button": "999px"},
+    "shadow": "Overlay shadow: 0px 8px 16px rgba(4,28,77,.11), 0px 4px 8px rgba(9,21,47,.05), 0 0 0 1px rgba(9,21,47,.05) + backdrop blur 16px"
+  },
+  "signature_elements": [
+    "glass mini flag cards (blur 16px, 10px radius: flag + name + line + status dot) floating over sky hero",
+    "score pills: dot + tinted number chip (green #24C335 / amber #FACC15 / indigo #4F46E5 system)",
+    "navy science cards 32px radius, 56px/48px padding, copy pinned bottom (Real soil samplings / Remote sensing / Scoring)",
+    "dark photo footer with 48px tight-tracked contact email + 4 French office addresses",
+    "sticky nav 24px/128px padding, blur 4px, FR/EN ghost button"
+  ],
+  "content_inventory": ["hero with giant left-aligned display type", "glass soil sample panel with segmented score bar", "logo strip", "how-it-works 3 steps", "3 navy science cards", "dark footer"],
+  "usage_rule": "design spec only — translate onto an approved code template's structure (e.g. design-system-v1 components + a page template); replace photo/3D artwork with licensed assets; self-host IBM Plex Sans",
+  "reference_render": "renders/genesis-reference-render/",
+  "license": "Figma Community — verify author terms for commercial reuse"
+}

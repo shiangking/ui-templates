@@ -1,0 +1,17 @@
+{
+  "id": "genesis-reference-render",
+  "version": "1.0.0",
+  "title": "Genesis reference render — faithful HTML translation of the Figma spec",
+  "type": "reference-render",
+  "derived_from": {
+    "design_source_id": "figma-genesis-landing",
+    "figma_file_key": "OGCqpCDbGAUOl6WDPlzVQ3"
+  },
+  "notes": [
+    "Faithful token translation: IBM Plex Sans via Google Fonts CDN (binary fonts not stored in repo), -0.04em tracking, sky gradient hero, glass flag cards, score pills, navy science cards, dark footer with all 4 real office addresses",
+    "Photo/3D artwork from the original design is approximated with CSS gradients + texture layers (mood, not pixel-identical)",
+    "Usage: translation guide showing how the Genesis design source maps to HTML/CSS. Not a page template."
+  ],
+  "user_review": "user viewed render 2026-10-22; critique led to the design-system layer build",
+  "license": "reference only — derived from Figma Community design (OGCqpCDbGAUOl6WDPlzVQ3)"
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "./manifest-schema.md",
-  "version": 3,
+  "version": 4,
   "updated_at": "2026-10-22",
   "policy": {
     "source_of_truth": "https://github.com/shiangking/ui-templates",
@@ -15,6 +15,18 @@
     "design_source": "templates with framework 'figma-design-source' are design specs, not code: translate them onto an approved code template's structure"
   },
   "templates": [
+    {
+      "id": "design-system-v1",
+      "version": "1.0.0",
+      "title": "Design System v1 — tokens, components, 2 motion profiles",
+      "use_when": "base layer for any new page: compose from its pills/buttons/topbar/sidebar/inputs/tables/cards, add Framer-soft or cinematic motion profile",
+      "license": "MIT (original, user-approved 2026-10-22)",
+      "framework": "vanilla-css-js",
+      "import": { "mode": "vendored" },
+      "path": "templates/design-system-v1/",
+      "manifest": "templates/design-system-v1/manifest.json",
+      "entry": "tokens.css"
+    },
     {
       "id": "fimbo-portfolio-1",
       "version": "1.0.0",
@@ -82,6 +94,42 @@
       "path": "templates/figma-startup-kit/",
       "manifest": "templates/figma-startup-kit/manifest.json",
       "entry": "design-spec.json"
+    },
+    {
+      "id": "figma-genesis-landing",
+      "version": "1.0.0",
+      "title": "Genesis Landing — agritech soil-intelligence design source",
+      "use_when": "premium science/agritech landing pages: sky-glass hero, floating glass flag cards, navy photo cards, IBM Plex Sans with tight tracking",
+      "license": "Figma Community (verify author terms for commercial reuse)",
+      "framework": "figma-design-source",
+      "import": { "mode": "vendored" },
+      "path": "templates/figma-genesis-landing/",
+      "manifest": "templates/figma-genesis-landing/manifest.json",
+      "entry": "design-spec.json"
+    },
+    {
+      "id": "genesis-reference-render",
+      "version": "1.0.0",
+      "title": "Genesis reference render — faithful HTML translation of the Figma spec",
+      "use_when": "reference implementation showing how the Genesis design source maps to HTML/CSS (IBM Plex Sans variable font self-hosted); not a page template, use as translation guide",
+      "license": "reference only — derived from Figma Community design (OGCqpCDbGAUOl6WDPlzVQ3)",
+      "framework": "static-html",
+      "import": { "mode": "vendored" },
+      "path": "renders/genesis-reference-render/",
+      "manifest": "renders/genesis-reference-render/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "odyssey-motion-reference",
+      "version": "1.0.0",
+      "title": "Odyssey motion reference — static render of odyssey-theme + Framer-soft motion annotations",
+      "use_when": "reference implementation showing how motion.css annotates an approved template (Odyssey homepage with theme switcher, curtain hero, staggered feature cards, scroll rail); not a page template",
+      "license": "MIT (derivative of odyssey-theme @ d191e571, motion layer original)",
+      "framework": "static-html",
+      "import": { "mode": "vendored" },
+      "path": "renders/odyssey-motion-reference/",
+      "manifest": "renders/odyssey-motion-reference/manifest.json",
+      "entry": "index.html"
     }
   ]
 }

@@ -1,0 +1,30 @@
+{
+  "id": "design-system-v1",
+  "version": "1.0.0",
+  "title": "Design System v1 — tokens, components and two motion profiles",
+  "description": "Base layer for building pages: 12-step neutral ramp, semantic colors, type scale 12-60px with tracking rules, 4px spacing grid, radius/shadow scales. Components: pills, buttons, topbar, sidebar, inputs, tables, cards, tabs, avatars, toggles, menus, tooltips, alerts, progress. Motion Profile 1 (Framer soft: springs 100/30 + 100/10 extracted from Nuria bundle) and Profile 2 (cinematic: scroll-pin, kinetic type, lightning, magnetic, parallax - Storm Lab vocabulary). Zero dependencies, prefers-reduced-motion safe.",
+  "origin": "user-directed build (2026-10-22): user asked for small-UI primitives layer + Framer motion DNA from supplied references (Nuria, Storm Lab, Genesis)",
+  "approval": {
+    "status": "user-approved-2026-10-22",
+    "note": "user reviewed component showcase + Odyssey motion render and said 'this is great, thanks, at least its nicer now'; page templates built on this layer still require per-template review"
+  },
+  "license": "original work, MIT",
+  "framework": "vanilla-css-js",
+  "import": { "mode": "vendored" },
+  "path": "templates/design-system-v1/",
+  "entry": "tokens.css",
+  "layers": {
+    "tokens": "tokens.css",
+    "components": "components.css",
+    "motion_profile_1_framer_soft": ["motion.css", "motion.js"],
+    "motion_profile_2_cinematic": ["motion-cinematic.css", "motion-cinematic.js"]
+  },
+  "usage": {
+    "rule": "page templates import tokens.css + components.css; add exactly one motion profile; compose components only from tokens",
+    "api_motion_1": "data-reveal=up|down|left|right|scale|pop|fade; data-stagger=1; .m-lift .m-pop .m-press .m-shine .m-pulse .m-shimmer; [data-marquee]>.m-track; .m-delay-1..4",
+    "api_motion_2": ".curtain>.line; [data-kinetic]; .scene>.scene-sticky with data-scene-zoom|fade|rise; [data-parallax=0.2]; [data-magnetic]; .grain; window.strike()",
+    "motion_js": "include motion.js (profile 1) and/or motion-cinematic.js (profile 2) with defer"
+  },
+  "demos": ["showcase.html", "storm-demo.html"],
+  "conformance": "prefers-reduced-motion honored in both profiles; no external requests; fonts self-hosted by consuming template"
+}

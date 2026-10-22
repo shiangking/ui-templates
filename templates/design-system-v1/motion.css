@@ -1,0 +1,123 @@
+/* ============================================================
+   design-system-v1 · motion.css
+   PROFILE 1 — "Framer soft" (DNA extracted from Nuria bundle:
+   spring(100,30,1) soft + spring(100,10,1) bouncy, appear-on-scroll,
+   stagger, marquee, hover micro-interactions).
+   API: data-reveal="up|down|left|right|scale|pop|fade" · data-stagger
+        .m-lift · .m-pop · .m-press · .m-shine · .m-pulse · .m-shimmer
+        [data-marquee] > .m-track · .m-delay-N
+   Everything respects prefers-reduced-motion.
+   ============================================================ */
+
+:root {
+  /* CSS approximations of the extracted Framer springs */
+  --spring-soft:   cubic-bezier(0.22, 1, 0.36, 1);   /* spring(100, 30, 1) — settles, no overshoot */
+  --spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1); /* spring(100, 10, 1) — ~8% overshoot */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);        /* framer "easeOut", the workhorse */
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-circ:  cubic-bezier(0, 0.55, 0.45, 1);       /* circOut accent */
+
+  --dur-appear: 640ms;   /* scroll-reveal duration */
+  --dur-hover:  160ms;   /* micro-interaction duration */
+  --dur-pop:    420ms;   /* bouncy pop duration */
+}
+
+/* ============ SCROLL APPEAR (Framer-style, opacity 0→1 + transform) ============ */
+[data-reveal] {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity var(--dur-appear) var(--ease-out),
+    transform var(--dur-appear) var(--spring-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="up"]   { transform: translateY(24px); }
+[data-reveal="down"] { transform: translateY(-16px); }
+[data-reveal="left"] { transform: translateX(24px); }
+[data-reveal="right"]{ transform: translateX(-24px); }
+[data-reveal="scale"]{ transform: scale(0.94); }
+[data-reveal="pop"]  { transform: scale(0.88); transition-timing-function: var(--spring-bouncy); }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* stagger: parent sets data-stagger, children inherit incremental delay */
+[data-stagger] > * { --reveal-delay: 0ms; }
+[data-stagger="1"] > :nth-child(1) { --reveal-delay: 60ms; }
+[data-stagger="1"] > :nth-child(2) { --reveal-delay: 120ms; }
+[data-stagger="1"] > :nth-child(3) { --reveal-delay: 180ms; }
+[data-stagger="1"] > :nth-child(4) { --reveal-delay: 240ms; }
+[data-stagger="1"] > :nth-child(5) { --reveal-delay: 300ms; }
+[data-stagger="1"] > :nth-child(6) { --reveal-delay: 360ms; }
+[data-stagger="1"] > :nth-child(7) { --reveal-delay: 420ms; }
+[data-stagger="1"] > :nth-child(8) { --reveal-delay: 480ms; }
+
+/* manual delays */
+.m-delay-1 { --reveal-delay: 80ms; }
+.m-delay-2 { --reveal-delay: 160ms; }
+.m-delay-3 { --reveal-delay: 240ms; }
+.m-delay-4 { --reveal-delay: 320ms; }
+
+/* ============ HOVER MICRO-INTERACTIONS ============ */
+.m-lift { transition: transform var(--dur-hover) var(--spring-soft), box-shadow var(--dur-hover) var(--ease-out); }
+.m-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.m-lift:active { transform: translateY(0); box-shadow: var(--shadow-xs); transition-duration: 60ms; }
+
+.m-pop { transition: transform var(--dur-pop) var(--spring-bouncy); }
+.m-pop:hover { transform: scale(1.04); }
+.m-pop:active { transform: scale(0.97); transition-duration: 80ms; }
+
+.m-press:active { transform: scale(0.98); transition: transform 80ms var(--ease-out); }
+
+/* button shine sweep (backOut/circOut accent) */
+.m-shine { position: relative; overflow: hidden; }
+.m-shine::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.35) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-circ);
+  pointer-events: none;
+}
+.m-shine:hover::after { transform: translateX(120%); }
+
+/* ============ PULSE (status dot) ============ */
+.m-pulse { position: relative; }
+.m-pulse::before {
+  content: ""; position: absolute; inset: -4px; border-radius: inherit;
+  background: inherit; opacity: 0.6;
+  animation: m-pulse 2.2s var(--ease-inout) infinite;
+}
+@keyframes m-pulse {
+  0%, 100% { transform: scale(1); opacity: .45; }
+  50%      { transform: scale(1.9); opacity: 0; }
+}
+
+/* ============ MARQUEE (infinite logo strip, Nuria-style) ============ */
+[data-marquee] {
+  display: flex; overflow: hidden; gap: var(--sp-10, 40px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+[data-marquee] > .m-track {
+  display: flex; align-items: center; gap: inherit;
+  flex: none; min-width: 100%;
+  animation: m-marquee 28s linear infinite;
+}
+[data-marquee]:hover > .m-track { animation-play-state: paused; }
+@keyframes m-marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+/* ============ SKELETON SHIMMER ============ */
+.m-shimmer {
+  background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  background-size: 220% 100%;
+  animation: m-shimmer 2.8s linear infinite;
+}
+@keyframes m-shimmer { from { background-position: 130% 0; } to { background-position: -90% 0; } }
+
+/* ============ REDUCED MOTION: kill all of it ============ */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .m-lift, .m-pop, .m-press, .m-shine { transition: none !important; }
+  .m-lift:hover, .m-pop:hover { transform: none !important; }
+  .m-shine::after, .m-pulse::before { display: none; }
+  [data-marquee] > .m-track { animation: none !important; flex-wrap: wrap; }
+  .m-shimmer { animation: none !important; }
+}

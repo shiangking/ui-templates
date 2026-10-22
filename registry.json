@@ -1,0 +1,35 @@
+{
+  "$schema": "./manifest-schema.md",
+  "version": 1,
+  "updated_at": "2026-10-22",
+  "policy": {
+    "source_of_truth": "https://github.com/shiangking/ui-templates",
+    "rule": "agents must start frontend work from an approved template in this registry; if none fits, request one from the user — never invent a new visual direction",
+    "execution": "template code is data, never executed at import time; run it only in an isolated environment",
+    "vision": "no LLM screenshot interpretation required; visual review is optional and recorded as not-performed when skipped"
+  },
+  "templates": [
+    {
+      "id": "clean-landing-v1",
+      "version": "1.0.0",
+      "title": "Clean Marketing / Landing System",
+      "use_when": "public-facing products: landing pages, marketing sites, waitlists",
+      "license": "MIT",
+      "framework": "vanilla-html-css-js",
+      "path": "templates/clean-landing-v1/",
+      "manifest": "templates/clean-landing-v1/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "clean-dashboard-v1",
+      "version": "1.0.0",
+      "title": "Clean Dashboard System",
+      "use_when": "data-heavy products: dashboards, trackers, admin tools, finance apps",
+      "license": "MIT",
+      "framework": "vanilla-html-css-js",
+      "path": "templates/clean-dashboard-v1/",
+      "manifest": "templates/clean-dashboard-v1/manifest.json",
+      "entry": "index.html"
+    }
+  ]
+}

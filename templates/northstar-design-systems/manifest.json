@@ -1,0 +1,36 @@
+{
+  "id": "northstar-design-systems",
+  "version": "1.0.0",
+  "title": "Northstar — three themed design systems (Studio / Fieldwork / Nocturne)",
+  "type": "code-template",
+  "description": "Self-contained multi-theme design system: one component vocabulary (buttons, badges, chips, cards, fields, tabs, switch, dialog, toast, avatar, table, sidebar app shell, landing + gallery recipes) driven entirely by CSS custom properties. Three complete themes on one var contract: Studio (quiet product clarity, indigo #5a46c5, Inter 600 -0.055em, radii 8/14/22), Fieldwork (bold editorial, rust #b73e15 on parchment #f2efe8, Arial Narrow 800 uppercase, tight radii 4/6/8), Nocturne (dark developer tool, mint #b3e9dd on #12151a, Inter 500 -0.06em). Zero dependencies, fully scoped to .ds-kit, a11y-first (skip links, focus-visible, ARIA tabs/dialog/switch, aria-live toasts, keyboard tab nav), prefers-reduced-motion + in-app motion pause.",
+  "origin": "user-supplied single-file interactive preview (northstar-preview.html, 73KB, 2026-10-23). Self-described original work informed by Storm Lab (editorial energy), Untitled UI + shadcn (product structure), Motion (interaction patterns). No third-party assets bundled.",
+  "approval": {
+    "status": "user-sourced-2026-10-23",
+    "note": "user provided the file and asked to add it to the library; analyzed and filed without modification of any design value"
+  },
+  "license": "original work (user-supplied) — treat as user-approved base layer",
+  "framework": "vanilla-css-js",
+  "import": { "mode": "vendored" },
+  "path": "templates/northstar-design-systems/",
+  "entry": "tokens.css",
+  "architecture": {
+    "tokens.css": "all design tokens + components + page recipes, scoped to .ds-kit (themes via [data-theme] blocks)",
+    "themes.json": "machine-readable theme definitions (colors, radius, fonts, display weight/tracking/transform) — the build-pipeline source of truth",
+    "themes.js": "themes.json exposed as window.NORTHSTAR_THEMES for the runtime",
+    "app.js": "dependency-free interactive reference app (landing / workspace / components views, state, event delegation)",
+    "preview.html": "loads tokens.css + themes.js + app.js — renders the full interactive preview"
+  },
+  "usage": {
+    "as_design_system": "import tokens.css; wrap your app in .ds-kit with data-theme=studio|field|nocturne; use the ds-* classes",
+    "theming": "swap any --ds-* variable per theme block or override at runtime; themes.json is the source for generating new themes",
+    "interaction_reference": "open preview.html for working examples of every component state, dialog, toast, and the motion-pause pattern",
+    "motion": "built-in: ds-enter 420ms cubic-bezier(.22,1,.36,1), 50ms stagger, 12px travel; [data-motion=reduced] kills all animation"
+  },
+  "cross_links": [
+    "design-system-v1: sibling base layer (single theme + 2 motion profiles); Northstar adds multi-theme theming + app shell + a11y patterns",
+    "motion DNA note: Northstar's --ds-ease cubic-bezier(.22,1,.36,1) is identical to design-system-v1's Framer-soft spring extracted from Nuria — independent convergence"
+  ],
+  "duplicate_check": "2026-10-23: no duplicates — distinct from design-system-v1 (multi-theme + app shell + a11y patterns), Odyssey (Astro marketing), Fimbo (portfolios), Figma sources (design specs)",
+  "conformance": "zero external requests; fonts system-stack (no webfont needed); prefers-reduced-motion honored; scoped styles cannot leak"
+}

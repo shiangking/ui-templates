@@ -1,0 +1,116 @@
+window.NORTHSTAR_THEMES = {
+  "studio": {
+    "name": "Studio",
+    "description": "Quiet clarity for dashboards, student tools, and everyday product interfaces.",
+    "colors": {
+      "canvas": "#f7f7f5",
+      "surface": "#ffffff",
+      "surface-alt": "#efefed",
+      "ink": "#24252a",
+      "muted": "#62646d",
+      "line": "#dedee3",
+      "line-strong": "#858892",
+      "accent": "#5a46c5",
+      "accent-hover": "#4836a8",
+      "on-accent": "#ffffff",
+      "tint": "#efecfb",
+      "success": "#22613f",
+      "success-bg": "#e9f4ed",
+      "warning": "#79520b",
+      "warning-bg": "#fff2d7",
+      "danger": "#a52938",
+      "danger-bg": "#ffecef",
+      "focus": "#5a46c5",
+      "graphic": "#ded7fa"
+    },
+    "radius": {
+      "small": "8px",
+      "medium": "14px",
+      "large": "22px",
+      "pill": "999px"
+    },
+    "font": {
+      "body": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "display": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "displayWeight": "600",
+    "displayTracking": "-0.055em",
+    "displayTransform": "none"
+  },
+  "field": {
+    "name": "Fieldwork",
+    "description": "Bold editorial layouts for outdoor brands, portfolios, and product stories.",
+    "colors": {
+      "canvas": "#f2efe8",
+      "surface": "#fffdf8",
+      "surface-alt": "#e7e3d9",
+      "ink": "#20231e",
+      "muted": "#5d6256",
+      "line": "#d1d0c5",
+      "line-strong": "#8e9585",
+      "accent": "#b73e15",
+      "accent-hover": "#a53610",
+      "on-accent": "#ffffff",
+      "tint": "#fbe8df",
+      "success": "#315b2d",
+      "success-bg": "#e4eddf",
+      "warning": "#765009",
+      "warning-bg": "#f9edcc",
+      "danger": "#9f2935",
+      "danger-bg": "#f9e5e6",
+      "focus": "#99340f",
+      "graphic": "#f06b32"
+    },
+    "radius": {
+      "small": "4px",
+      "medium": "6px",
+      "large": "8px",
+      "pill": "999px"
+    },
+    "font": {
+      "body": "'Helvetica Neue', Arial, ui-sans-serif, system-ui, sans-serif",
+      "display": "'Arial Narrow', Impact, 'Helvetica Neue', Arial, sans-serif"
+    },
+    "displayWeight": "800",
+    "displayTracking": "-0.045em",
+    "displayTransform": "uppercase"
+  },
+  "nocturne": {
+    "name": "Nocturne",
+    "description": "A precise dark interface for developer tools, creative products, and launch pages.",
+    "colors": {
+      "canvas": "#12151a",
+      "surface": "#1b2028",
+      "surface-alt": "#262d37",
+      "ink": "#f2f5fa",
+      "muted": "#a6b1c3",
+      "line": "#384353",
+      "line-strong": "#75859c",
+      "accent": "#b3e9dd",
+      "accent-hover": "#cef4eb",
+      "on-accent": "#142c28",
+      "tint": "#253d39",
+      "success": "#a6e2bd",
+      "success-bg": "#203b2c",
+      "warning": "#f1ce83",
+      "warning-bg": "#3f3422",
+      "danger": "#ffb7c0",
+      "danger-bg": "#43262e",
+      "focus": "#b3e9dd",
+      "graphic": "#6f8ee0"
+    },
+    "radius": {
+      "small": "8px",
+      "medium": "12px",
+      "large": "20px",
+      "pill": "999px"
+    },
+    "font": {
+      "body": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "display": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "displayWeight": "500",
+    "displayTracking": "-0.06em",
+    "displayTransform": "none"
+  }
+};

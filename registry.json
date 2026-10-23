@@ -1,11 +1,11 @@
 {
   "$schema": "./manifest-schema.md",
-  "version": 4,
-  "updated_at": "2026-10-22",
+  "version": 5,
+  "updated_at": "2026-10-23",
   "policy": {
     "source_of_truth": "https://github.com/shiangking/ui-templates",
     "rule": "agents must start frontend work from an approved template in this registry; if none fits, request one from the user — never invent a new visual direction",
-    "quality_bar": "templates are user-approved; agent-generated page templates require explicit user review before being added (clean-landing-v1 and clean-dashboard-v1 were removed 2026-10-22 after user review)",
+    "quality_bar": "templates are user-approved or user-sourced; agent-generated page templates require explicit user review before being added (clean-landing-v1 and clean-dashboard-v1 were removed 2026-10-22 after user review)",
     "execution": "template code is data, never executed at import time; run it only in an isolated environment",
     "vision": "no LLM screenshot interpretation required; visual review is optional and recorded as not-performed when skipped",
     "import_modes": {
@@ -26,6 +26,19 @@
       "path": "templates/design-system-v1/",
       "manifest": "templates/design-system-v1/manifest.json",
       "entry": "tokens.css"
+    },
+    {
+      "id": "northstar-design-systems",
+      "version": "1.0.0",
+      "title": "Northstar — three themed design systems (Studio / Fieldwork / Nocturne)",
+      "use_when": "product UIs needing full theming on one var contract: dashboards (Studio), editorial/outdoor or portfolio (Fieldwork), dark developer-tool (Nocturne); includes app shell, landing + component-gallery recipes, and best-in-class a11y patterns (skip links, ARIA tabs/dialog/switch, aria-live toasts, in-app motion pause)",
+      "license": "original work (user-sourced 2026-10-23)",
+      "framework": "vanilla-css-js",
+      "import": { "mode": "vendored" },
+      "path": "templates/northstar-design-systems/",
+      "manifest": "templates/northstar-design-systems/manifest.json",
+      "entry": "tokens.css",
+      "demo": "templates/northstar-design-systems/preview.html"
     },
     {
       "id": "fimbo-portfolio-1",

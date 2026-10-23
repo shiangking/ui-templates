@@ -10,7 +10,7 @@ fetchable from any machine, no local copies required.
 3. **No vision dependency.** Visual review is *optional*; when skipped it is recorded `optional-not-performed` — never marked passed. Acceptance rests on deterministic conformance checks.
 4. **Templates are data.** Import is static (files or pinned git clone). Template code runs only in an isolated environment.
 5. **If no template fits, ask.** Request a new template from the user; do not invent a new visual direction.
-6. **Quality bar is human.** Templates enter this library only with user approval; agent-authored work must pass explicit user review (two early agent-generated page templates were removed on 2026-10-22 for this reason). `design-system-v1` was approved by the user on 2026-10-22; reference renders are guides, not page templates.
+6. **Quality bar is human.** Templates enter this library only with user approval or are user-sourced; agent-authored work must pass explicit user review (two early agent-generated page templates were removed on 2026-10-22 for this reason). `design-system-v1` was approved by the user on 2026-10-22; `northstar-design-systems` was user-sourced on 2026-10-23; reference renders are guides, not page templates.
 
 ## Layers
 
@@ -29,6 +29,27 @@ user-supplied Framer references.
 
 Usage rule: import `tokens.css` + `components.css`, add **exactly one** motion profile, compose
 components only from tokens. Zero dependencies. Both profiles honor `prefers-reduced-motion`.
+
+### `northstar-design-systems` — multi-theme design system (user-sourced 2026-10-23)
+
+Three complete design directions on **one CSS-variable contract** (`--ds-*`), fully scoped to `.ds-kit`,
+zero dependencies, ~50 components + page recipes (landing / app shell / component gallery), and
+best-in-class a11y: skip links, `:focus-visible`, ARIA tabs/dialog/switch, `aria-live` toasts,
+keyboard tab navigation, and both OS `prefers-reduced-motion` **and** an in-app motion-pause toggle.
+
+| theme | personality | signature values |
+|---|---|---|
+| **Studio** | quiet product clarity (dashboards, everyday product UI) | `#5a46c5` indigo, Inter 600 @ −0.055em, radii 8/14/22px |
+| **Fieldwork** | bold editorial (outdoor brands, portfolios) | `#b73e15` rust on parchment `#f2efe8`, Arial Narrow 800 uppercase, tight radii 4/6/8px |
+| **Nocturne** | dark precision (developer tools, launch pages) | `#b3e9dd` mint on `#12151a`, Inter 500 @ −0.06em, periwinkle `#6f8ee0` graphics |
+
+Files: `tokens.css` (all values), `themes.json` (machine-readable theme source of truth), `themes.js`,
+`app.js` (interactive reference), `preview.html` (open for a working tour). Built-in motion: `ds-enter`
+420ms `cubic-bezier(.22,1,.36,1)` with 50ms stagger — the same curve as our Framer-soft profile.
+
+**Relationship to `design-system-v1`:** siblings, not duplicates. v1 = single-theme vocabulary + 2
+motion profiles for marketing pages. Northstar = multi-theme theming + application shell + a11y
+patterns for product UIs. Pick by project type; they share philosophy, not files.
 
 ## Templates
 
@@ -72,8 +93,8 @@ curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/
 # import a pinned upstream template (shallow clone at the pinned SHA)
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- odyssey-theme ./my-site
 
-# import a vendored design-spec
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- figma-startup-kit ./my-spec
+# import a vendored design-spec or design system
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/tools/import_template.sh)" -- northstar-design-systems ./my-kit
 ```
 
 ## Conformance (checked, not judged)

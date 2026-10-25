@@ -1,0 +1,105 @@
+{
+  "id": "orbita-dark-landing",
+  "version": "1.0.0",
+  "title": "Orbita — dark cinematic space landing page",
+  "license": "original work (agent-generated; added at explicit user request 2026-10-25)",
+  "source": "agent-built single-page site, restructured to template layout (HTML/CSS/JS split, CDN fonts removed per no-external-requests rule)",
+  "framework": "vanilla-html-css-js",
+  "dependencies": [],
+  "entry": "index.html",
+  "use_when": "single-product marketing/launch pages wanting a dark space aesthetic: animated starfield hero with orbiting planet, bento feature grid, itinerary timeline, pricing tiers, FAQ, gradient CTA; responsive with no-JS content failsafe and prefers-reduced-motion support",
+  "tokens": {
+    "--bg": "#05060a",
+    "--bg-2": "#090b12",
+    "--panel": "rgba(255, 255, 255, 0.035)",
+    "--panel-strong": "rgba(255, 255, 255, 0.06)",
+    "--line": "rgba(255, 255, 255, 0.09)",
+    "--line-strong": "rgba(255, 255, 255, 0.16)",
+    "--ink": "#eef0f7",
+    "--muted": "#9aa1b5",
+    "--faint": "#6b7186",
+    "--sky": "#7dd3fc",
+    "--violet": "#a78bfa",
+    "--teal": "#5eead4",
+    "--grad": "linear-gradient(92deg, var(--sky), var(--violet) 55%, #f0abfc)",
+    "--font-body": "system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+    "--font-display": "Georgia, \"Times New Roman\", Times, serif",
+    "--font-mono": "ui-monospace, \"SF Mono\", \"Cascadia Mono\", \"Roboto Mono\", monospace",
+    "--radius": "20px",
+    "--nav-h": "72px",
+    "--ease": "cubic-bezier(0.22, 1, 0.36, 1)"
+  },
+  "layout": {
+    "structure": "fixed glass nav; 100svh hero (copy left, CSS planet right); marquee ribbon; 6 content sections (bento experience, timeline journey, testimonials, pricing, FAQ accordion, gradient CTA panel); footer",
+    "breakpoints": {
+      "mobile": "max-width 560px",
+      "tablet": "max-width 860px",
+      "desktop-narrow": "max-width 1020px"
+    }
+  },
+  "components": {
+    "nav": "fixed top bar, 72px (var(--nav-h)), glass blur on scroll, logo + 5 anchor links + CTA button; burger below 860px",
+    "hero": "100svh grid: eyebrow badge, h1 clamp(44px-88px) with gradient span, stats row (3 count-up numbers), two CTAs; right: pure-CSS planet with ring, glow, orbiting moon; canvas starfield behind (#stars)",
+    "marquee": "infinite CSS scroll ribbon of mono uppercase phrases",
+    "bento": "CSS grid of glass cards (var(--panel), radius var(--radius)), cursor-follow radial highlight, one card renders a CSS cupola window with Earth horizon",
+    "timeline": "vertical journey with dots + glass cards, alternating alignment on desktop",
+    "pricing": "3 tier cards, featured tier with gradient border and 'Popular' tag",
+    "faq": "details-free JS accordion, aria-expanded toggles, plus/minus indicator",
+    "cta-panel": "gradient-border panel with headline + primary button",
+    "reveal": "IntersectionObserver scroll reveals, gated behind html.js class (no-JS failsafe)"
+  },
+  "usability_rules": [
+    "no horizontal overflow at 375/768/1280px",
+    "no external network requests (system font stacks only)",
+    "content visible with JavaScript disabled (reveal styles gated behind html.js)",
+    "prefers-reduced-motion disables starfield drift, marquee, and reveals",
+    "focus-visible outlines on interactive elements; aria-expanded on FAQ and burger"
+  ],
+  "files": [
+    "index.html",
+    "assets/styles.css",
+    "assets/app.js",
+    "manifest.json"
+  ],
+  "conformance_checks": {
+    "required_components": [
+      "#nav",
+      "#stars",
+      ".hero",
+      ".bento .card",
+      "#journey",
+      "#voices",
+      "#missions",
+      "#faq",
+      "#reserve",
+      ".cta-panel",
+      ".btn-primary"
+    ],
+    "token_keys": [
+      "--bg",
+      "--bg-2",
+      "--panel",
+      "--panel-strong",
+      "--line",
+      "--line-strong",
+      "--ink",
+      "--muted",
+      "--faint",
+      "--sky",
+      "--violet",
+      "--teal",
+      "--grad",
+      "--font-body",
+      "--font-display",
+      "--font-mono",
+      "--radius",
+      "--nav-h",
+      "--ease"
+    ],
+    "viewports": [
+      375,
+      768,
+      1280
+    ]
+  }
+}

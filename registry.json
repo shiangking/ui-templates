@@ -1,7 +1,7 @@
 {
   "$schema": "./manifest-schema.md",
-  "version": 5,
-  "updated_at": "2026-10-23",
+  "version": 6,
+  "updated_at": "2026-10-25",
   "policy": {
     "source_of_truth": "https://github.com/shiangking/ui-templates",
     "rule": "agents must start frontend work from an approved template in this registry; if none fits, request one from the user — never invent a new visual direction",
@@ -22,7 +22,9 @@
       "use_when": "base layer for any new page: compose from its pills/buttons/topbar/sidebar/inputs/tables/cards, add Framer-soft or cinematic motion profile",
       "license": "MIT (original, user-approved 2026-10-22)",
       "framework": "vanilla-css-js",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "templates/design-system-v1/",
       "manifest": "templates/design-system-v1/manifest.json",
       "entry": "tokens.css"
@@ -34,7 +36,9 @@
       "use_when": "product UIs needing full theming on one var contract: dashboards (Studio), editorial/outdoor or portfolio (Fieldwork), dark developer-tool (Nocturne); includes app shell, landing + component-gallery recipes, and best-in-class a11y patterns (skip links, ARIA tabs/dialog/switch, aria-live toasts, in-app motion pause)",
       "license": "original work (user-sourced 2026-10-23)",
       "framework": "vanilla-css-js",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "templates/northstar-design-systems/",
       "manifest": "templates/northstar-design-systems/manifest.json",
       "entry": "tokens.css",
@@ -47,7 +51,12 @@
       "use_when": "personal one-page portfolios with project cards and contact form",
       "license": "MIT (upstream @imfunniee)",
       "framework": "vanilla-html-css-js",
-      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "1" },
+      "import": {
+        "mode": "external-git",
+        "repo": "https://github.com/imfunniee/fimbo.git",
+        "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43",
+        "path": "1"
+      },
       "manifest": "templates/fimbo-portfolio-1/manifest.json",
       "entry": "index.html"
     },
@@ -58,7 +67,12 @@
       "use_when": "bold single-color personal portfolios with animated header",
       "license": "MIT (upstream @imfunniee)",
       "framework": "vanilla-html-css-js",
-      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "2" },
+      "import": {
+        "mode": "external-git",
+        "repo": "https://github.com/imfunniee/fimbo.git",
+        "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43",
+        "path": "2"
+      },
       "manifest": "templates/fimbo-portfolio-2/manifest.json",
       "entry": "index.html"
     },
@@ -69,7 +83,12 @@
       "use_when": "multi-section portfolios with particle background and box animations",
       "license": "MIT (upstream @imfunniee)",
       "framework": "vanilla-html-css-js",
-      "import": { "mode": "external-git", "repo": "https://github.com/imfunniee/fimbo.git", "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43", "path": "3" },
+      "import": {
+        "mode": "external-git",
+        "repo": "https://github.com/imfunniee/fimbo.git",
+        "sha": "2297bec6ff077bea44a61c91793bc33f614c6e43",
+        "path": "3"
+      },
       "manifest": "templates/fimbo-portfolio-3/manifest.json",
       "entry": "index.html"
     },
@@ -80,7 +99,12 @@
       "use_when": "startup marketing sites and blogs with a full Astro component system",
       "license": "MIT (upstream Treefarm Studio LLC)",
       "framework": "astro",
-      "import": { "mode": "external-git", "repo": "https://github.com/treefarmstudio/odyssey-theme.git", "sha": "d191e5715a2519e25be4629b933189c421b30a1a", "path": "." },
+      "import": {
+        "mode": "external-git",
+        "repo": "https://github.com/treefarmstudio/odyssey-theme.git",
+        "sha": "d191e5715a2519e25be4629b933189c421b30a1a",
+        "path": "."
+      },
       "manifest": "templates/odyssey-theme/manifest.json",
       "entry": "src/pages/index.astro"
     },
@@ -91,7 +115,9 @@
       "use_when": "AI/creator product landing pages with dark futuristic aesthetic",
       "license": "Figma Community (verify author terms for commercial reuse)",
       "framework": "figma-design-source",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "templates/figma-prompverse-ai/",
       "manifest": "templates/figma-prompverse-ai/manifest.json",
       "entry": "design-spec.json"
@@ -103,7 +129,9 @@
       "use_when": "SaaS/startup pages composed from a large catalog of pre-designed sections",
       "license": "Figma Community (verify author terms for commercial reuse)",
       "framework": "figma-design-source",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "templates/figma-startup-kit/",
       "manifest": "templates/figma-startup-kit/manifest.json",
       "entry": "design-spec.json"
@@ -115,7 +143,9 @@
       "use_when": "premium science/agritech landing pages: sky-glass hero, floating glass flag cards, navy photo cards, IBM Plex Sans with tight tracking",
       "license": "Figma Community (verify author terms for commercial reuse)",
       "framework": "figma-design-source",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "templates/figma-genesis-landing/",
       "manifest": "templates/figma-genesis-landing/manifest.json",
       "entry": "design-spec.json"
@@ -127,7 +157,9 @@
       "use_when": "reference implementation showing how the Genesis design source maps to HTML/CSS (IBM Plex Sans variable font self-hosted); not a page template, use as translation guide",
       "license": "reference only — derived from Figma Community design (OGCqpCDbGAUOl6WDPlzVQ3)",
       "framework": "static-html",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "renders/genesis-reference-render/",
       "manifest": "renders/genesis-reference-render/manifest.json",
       "entry": "index.html"
@@ -139,9 +171,25 @@
       "use_when": "reference implementation showing how motion.css annotates an approved template (Odyssey homepage with theme switcher, curtain hero, staggered feature cards, scroll rail); not a page template",
       "license": "MIT (derivative of odyssey-theme @ d191e571, motion layer original)",
       "framework": "static-html",
-      "import": { "mode": "vendored" },
+      "import": {
+        "mode": "vendored"
+      },
       "path": "renders/odyssey-motion-reference/",
       "manifest": "renders/odyssey-motion-reference/manifest.json",
+      "entry": "index.html"
+    },
+    {
+      "id": "orbita-dark-landing",
+      "version": "1.0.0",
+      "title": "Orbita — dark cinematic space landing page",
+      "use_when": "single-product marketing/launch pages wanting a dark space aesthetic: animated starfield hero with orbiting planet, bento feature grid, itinerary timeline, pricing tiers, FAQ, gradient CTA; responsive with no-JS content failsafe and prefers-reduced-motion support",
+      "license": "original work (agent-generated; added at explicit user request 2026-10-25)",
+      "framework": "vanilla-html-css-js",
+      "import": {
+        "mode": "vendored"
+      },
+      "path": "templates/orbita-dark-landing/",
+      "manifest": "templates/orbita-dark-landing/manifest.json",
       "entry": "index.html"
     }
   ]

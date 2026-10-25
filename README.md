@@ -73,6 +73,7 @@ patterns for product UIs. Pick by project type; they share philosophy, not files
 | `fimbo-portfolio-2` | header + social one-pager | vanilla | [imfunniee/fimbo](https://github.com/imfunniee/fimbo) `2` @ `2297bec` |
 | `fimbo-portfolio-3` | multi-section + particles | vanilla | [imfunniee/fimbo](https://github.com/imfunniee/fimbo) `3` @ `2297bec` |
 | `odyssey-theme` | startup marketing/blog theme | astro | [treefarmstudio/odyssey-theme](https://github.com/treefarmstudio/odyssey-theme) @ `d191e57` |
+| `orbita-dark-landing` | dark cinematic space landing (starfield hero, bento, timeline, pricing, FAQ) | vanilla | original work, added at user request 2026-10-25 |
 
 Both upstreams are MIT-licensed. Pinned SHAs guarantee byte-identical imports.
 
@@ -119,3 +120,9 @@ conformance and functional usability — they do **not** claim subjective visual
 explicitly unassessed unless a human reviews it.
 
 See [manifest-schema.md](manifest-schema.md) to add a template (directory + manifest + registry entry).
+
+### Agent-added (vendored, user-requested additions)
+
+| id | use for | framework | provenance |
+|---|---|---|---|
+| `orbita-dark-landing` | dark space-themed product landing page | vanilla | original work by agent, vendored at user request 2026-10-25 — user-approved addition, see [manifest](templates/orbita-dark-landing/manifest.json) |

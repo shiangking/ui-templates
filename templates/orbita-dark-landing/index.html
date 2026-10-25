@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orbita — The Lunar Flyby Experience</title>
+<meta name="description" content="Orbita flies private crews of four on a five-day lunar flyby. Five-star calm, orbital precision." />
+<meta name="theme-color" content="#05060a" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23a78bfa' stroke-width='2'/%3E%3Ccircle cx='24' cy='10' r='4' fill='%237dd3fc'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<script>document.documentElement.classList.add("js");</script>
+<!-- ambient -->
+<div class="space-bg"></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="aurora a1" aria-hidden="true"></div>
+<div class="aurora a2" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo" aria-label="Orbita home">
+      <span class="logo-mark"></span>
+      ORBITA
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#experience">Experience</a>
+      <a href="#journey">The Journey</a>
+      <a href="#voices">Voices</a>
+      <a href="#missions">Missions</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#missions" class="btn btn-ghost">View pricing</a>
+      <a href="#reserve" class="btn btn-primary">Reserve a seat</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#experience">Experience</a>
+  <a href="#journey">The Journey</a>
+  <a href="#voices">Voices</a>
+  <a href="#missions">Missions</a>
+  <a href="#faq">FAQ</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal"><span class="dot"></span> Now boarding &middot; Season III &middot; 4 seats left</span>
+        <h1 class="reveal" data-delay="1">
+          Leave the noise behind.<br />
+          <em class="grad-text">Look back</em> at everything.
+        </h1>
+        <p class="sub reveal" data-delay="2">
+          Orbita flies private crews of four on a five-day lunar flyby —
+          engineered with the calm precision of a five-star hotel, not a rocket launch.
+        </p>
+        <div class="hero-actions reveal" data-delay="3">
+          <a href="#reserve" class="btn btn-primary">Reserve your seat <span class="arrow">&rarr;</span></a>
+          <a href="#journey" class="btn btn-ghost">Watch the flight film <span style="opacity:.6">&#9654;</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" data-delay="2" id="heroVisual" aria-hidden="true">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring r2"></div>
+        <div class="orbit-ring r3"></div>
+        <div class="moon-wrap"><div class="moon"></div></div>
+        <div class="planet"></div>
+        <div class="hero-badge">
+          <b>LUNAR FLYBY VII</b><br />
+          T&minus;42 days &middot; Cape Meridian &middot; 96h in transit
+        </div>
+      </div>
+    </div>
+
+    <div class="stats reveal" data-delay="3">
+      <div class="stat"><div class="num"><span data-count="12">0</span></div><div class="label">Flights completed</div></div>
+      <div class="stat"><div class="num"><span data-count="96">0</span>h</div><div class="label">Microgravity per flight</div></div>
+      <div class="stat"><div class="num"><span data-count="38">0</span></div><div class="label">Civilian crew members</div></div>
+      <div class="stat"><div class="num"><span data-count="1.8" data-decimal="1">0</span>M km</div><div class="label">Total distance flown</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Helios Propulsion</span><span class="sep"></span>
+      <span>Atlas Flight Medicine</span><span class="sep"></span>
+      <span>The K&aacute;rm&aacute;n Institute</span><span class="sep"></span>
+      <span>Stellaris Cuisine</span><span class="sep"></span>
+      <span>Orbital Outfitters</span><span class="sep"></span>
+      <span>Meridian Range</span><span class="sep"></span>
+    </div>
+    <div class="marquee-track">
+      <span>Helios Propulsion</span><span class="sep"></span>
+      <span>Atlas Flight Medicine</span><span class="sep"></span>
+      <span>The K&aacute;rm&aacute;n Institute</span><span class="sep"></span>
+      <span>Stellaris Cuisine</span><span class="sep"></span>
+      <span>Orbital Outfitters</span><span class="sep"></span>
+      <span>Meridian Range</span><span class="sep"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= EXPERIENCE (bento) ================= -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The Experience</div>
+      <h2>A cabin designed for stillness, <em class="grad-text" style="font-style:italic">not spectacle</em></h2>
+      <p>Every surface, sound and schedule aboard Orbita is tuned for one thing: making room for the view.</p>
+    </div>
+
+    <div class="bento">
+      <article class="card tall reveal" data-tilt>
+        <div class="card-tag">Signature</div>
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+        </div>
+        <h3>The Window Seat, reimagined</h3>
+        <p>A 180&deg; cupola wraps the observation deck — no struts, no glare, no queue. Your seat is assigned for the entire flight, oriented toward Earthrise.</p>
+        <div class="spacer"></div>
+        <div class="cupola" aria-hidden="true"><div class="frame"></div></div>
+      </article>
+
+      <article class="card wide reveal" data-delay="1" data-tilt>
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 13h16M4 13a8 8 0 0 1 16 0M9 21h6M12 13v8"/><path d="M9 5.5C9 4 10.5 3 12 3s3 1 3 2.5"/></svg>
+        </div>
+        <h3>Zero-gravity dining</h3>
+        <p>A nine-course tasting menu developed with a two-Michelin-star chef, reformulated for microgravity. Served warmed, on magnetic ceramic.</p>
+      </article>
+
+      <article class="card wide-2 reveal" data-delay="2" data-tilt>
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10z"/></svg>
+        </div>
+        <h3>Medical concierge</h3>
+        <p>A 90-day pre-flight program with flight surgeons from Atlas. Centrifuge training, sleep calibration, and a dedicated physician aboard every mission.</p>
+      </article>
+
+      <article class="card wide-2 reveal" data-delay="3" data-tilt>
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M3 18h18"/></svg>
+        </div>
+        <h3>Quiet cabins</h3>
+        <p>Private sleep pods with adaptive pressure bedding and a sound floor below 30 dB. Nine hours of darkness, every night, even in orbit.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNEY (timeline) ================= -->
+<section class="block" id="journey" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">The Journey</div>
+      <h2>Five days. <em class="grad-text" style="font-style:italic">One perfect arc</em> around the Moon.</h2>
+      <p>No docking, no station rotations. A single, quiet free-return trajectory — the safest path ever flown with civilians aboard.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="node">D-3</div>
+        <div>
+          <div class="tl-sub">Cape Meridian &middot; Training campus</div>
+          <h3>Arrival &amp; crew rehearsal</h3>
+          <p>Meet your crew and commander — a veteran of four orbital missions. Full-dress launch rehearsal, suit fitting, and your first zero-g parabola flight.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="node">D0</div>
+        <div>
+          <div class="tl-sub">Launch &middot; 06:40 local</div>
+          <h3>Ascension</h3>
+          <p>Eight and a half minutes from pad to orbit. The loudest six hundred seconds of your life, followed by absolute silence as the engines cut and gravity lets go.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="node">D2</div>
+        <div>
+          <div class="tl-sub">Trans-lunar coast</div>
+          <h3>Earthrise</h3>
+          <p>At 07:14 UTC on day two, Earth climbs over the lunar horizon in a single slow motion. The crew goes quiet. This is the moment everyone books the flight for.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="node">D3</div>
+        <div>
+          <div class="tl-sub">Far side passage</div>
+          <h3>The silence of the far side</h3>
+          <p>For 48 minutes, you are more distant from every living human than anyone has ever been. Radio stays off. Dinner is served facing the terminator line.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="node">D5</div>
+        <div>
+          <div class="tl-sub">Splashdown &middot; South Pacific</div>
+          <h3>Homecoming</h3>
+          <p>A daylight splashdown, a warm shower within the hour, and a private debrief over champagne. Your flight suit, mission patch and a crystal of the view — yours to keep.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOICES ================= -->
+<section class="block" id="voices" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Voices</div>
+      <h2>What our crew <em class="grad-text" style="font-style:italic">still talks about</em></h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote reveal">
+        <div class="stars-line" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;I expected the launch. Nobody warned me about the quiet on the far side. I&rsquo;ve reorganized my entire life around getting back there.&rdquo;</blockquote>
+        <figcaption class="who">
+          <div class="avatar" style="background:linear-gradient(135deg,#7dd3fc,#a78bfa)">MA</div>
+          <div><div class="name">Mara Aldrin</div><div class="role">Architect &middot; Flyby IV</div></div>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal" data-delay="1">
+        <div class="stars-line" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;It felt less like a rocket and more like a very good hotel that happens to be leaving Earth. The attention to calm is the real engineering.&rdquo;</blockquote>
+        <figcaption class="who">
+          <div class="avatar" style="background:linear-gradient(135deg,#5eead4,#7dd3fc)">JO</div>
+          <div><div class="name">Jonah Okafor</div><div class="role">Concert pianist &middot; Flyby II</div></div>
+        </figcaption>
+      </figure>
+      <figure class="quote reveal" data-delay="2">
+        <div class="stars-line" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>&ldquo;My mother watched Earthrise on the 8K uplink from her kitchen. She cried. Then she booked Season V. That&rsquo;s the review.&rdquo;</blockquote>
+        <figcaption class="who">
+          <div class="avatar" style="background:linear-gradient(135deg,#f0abfc,#a78bfa)">LS</div>
+          <div><div class="name">Lena Sato</div><div class="role">Documentary filmmaker &middot; Flyby V</div></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISSIONS (pricing) ================= -->
+<section class="block" id="missions" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Missions</div>
+      <h2>Three ways to leave. <em class="grad-text" style="font-style:italic">One way to come back changed</em></h2>
+      <p>All fares are all-inclusive: training, medical program, flight suit, and everything aboard. No add-ons, no upsells, no fine print.</p>
+    </div>
+
+    <div class="tiers">
+      <article class="tier reveal">
+        <h3>Skyline</h3>
+        <div class="tier-sub">Suborbital &middot; 90 minutes</div>
+        <div class="price">$250<small> / seat</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Weightless arc above the K&aacute;rm&aacute;n line</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Two days of training at Cape Meridian</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Window assigned at boarding</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Flights weekly, year-round</li>
+        </ul>
+        <a href="#reserve" class="btn btn-ghost">Join the roster</a>
+      </article>
+
+      <article class="tier featured reveal" data-delay="1">
+        <div class="tier-tag">Most chosen</div>
+        <h3>Orbit</h3>
+        <div class="tier-sub">Low Earth orbit &middot; 4 days</div>
+        <div class="price">$8.5M<small> / seat</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> 62 sunrises and sunsets, every 90 minutes</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Private cabin + cupola reservation block</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> 30-day training &amp; full medical program</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> 8K live uplink for family and friends</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Zero-g dining program included</li>
+        </ul>
+        <a href="#reserve" class="btn btn-primary">Reserve Season IV <span class="arrow">&rarr;</span></a>
+      </article>
+
+      <article class="tier reveal" data-delay="2">
+        <h3>Lunar</h3>
+        <div class="tier-sub">Free-return flyby &middot; 5 days</div>
+        <div class="price">$52M<small> / seat</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> The full Earthrise, from 70 km above the surface</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Crew of four, one dedicated commander</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> 90-day preparation residency</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Far-side silence ritual &amp; commemorative crystal</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 7"/></svg> Lifetime Skyline privileges for your family</li>
+        </ul>
+        <a href="#reserve" class="btn btn-ghost">Apply for the waitlist</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="block" id="faq" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">Questions</div>
+      <h2>Asked before <em class="grad-text" style="font-style:italic">every flight</em></h2>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Do I need to be an athlete or a pilot?
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a"><p>No. Our oldest crew member was 78 and our youngest 24. The medical program exists to prepare you, not to filter you out — about 94% of applicants are cleared to fly after the standard assessment.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">How risky is a lunar flyby, honestly?
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a"><p>The free-return trajectory requires no engine burns after departure — if everything works, physics brings you home. Our launch vehicle has flown 31 consecutive successful missions, and every flight carries a full-abort capability through re-entry.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What does &ldquo;all-inclusive&rdquo; actually cover?
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a"><p>Training and residency, medical program, custom-fitted flight suit, all meals aboard, insurance, ground transport, and post-flight care. The only things not included are personal shopping in the spaceport retail gallery and, technically, souvenirs from the Moon.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">Can I really keep my seat reservation for years?
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a"><p>Yes. Deposits lock your seat and your launch window. 40% is fully refundable at any point before training begins, and seats are transferable to immediate family. Most crew members book 2&ndash;3 years out.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">What happens to the environment?
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a"><p>Every mission funds the removal of one derelict object from low Earth orbit — a commitment audited annually by the K&aacute;rm&aacute;n Institute. To date, Orbita flights have retired 14 pieces of debris and counting.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="block" id="reserve" style="padding-top: 20px;">
+  <div class="wrap">
+    <div class="cta-panel reveal">
+      <span class="eyebrow"><span class="dot"></span> Season IV &middot; launches spring 2027</span>
+      <h2 style="margin-top:22px">The view is already there.<br /><em class="grad-text" style="font-style:italic">The seat is going.</em></h2>
+      <p>Four seats per flight. One conversation to begin. Our crew coordinators reply within two business days.</p>
+      <a href="#" class="btn btn-primary" style="padding:16px 34px">Request an invitation <span class="arrow">&rarr;</span></a>
+      <p style="margin:22px auto 0; font-size:13px; color:var(--faint)">No deposit required to start the conversation.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="logo" style="font-size:18px">
+      <span class="logo-mark" style="width:24px;height:24px"></span>
+      ORBITA
+    </a>
+    <div class="cols">
+      <a href="#experience">Experience</a>
+      <a href="#journey">The Journey</a>
+      <a href="#missions">Missions</a>
+      <a href="#faq">FAQ</a>
+      <a href="#">Safety record</a>
+      <a href="#">Press kit</a>
+    </div>
+    <div class="legal">
+      <span>&copy; 2026 Orbita Expeditions. A fictional company, lovingly rendered.</span>
+      <span>Cape Meridian &middot; Earth (for now)</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

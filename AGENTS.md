@@ -423,11 +423,7 @@ Do not claim success without execution evidence.
 
 ## 14. Implementation Instructions
 
-First inspect the existing Phase E Product Factory.
 
-Identify which modules already support template-driven development and which require changes.
-
-Then:
 
 1. Propose the minimum required changes.
 2. Identify any new dependencies.

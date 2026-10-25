@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "title": "Odyssey motion reference — odyssey-theme render with Framer-soft motion",
   "type": "reference-render",
+  "entry": "index.html",
+  "files": [
+    "index.html",
+    "manifest.json"
+  ],
   "derived_from": {
     "template_id": "odyssey-theme",
     "upstream": "https://github.com/treefarmstudio/odyssey-theme",

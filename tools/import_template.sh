@@ -32,7 +32,28 @@ fi
 
 TPL_ID="$1"
 DEST="${2:-./$TPL_ID}"
-BASE="$REPO_RAW/templates/$TPL_ID"
+# Entry location: registry entries live under templates/ or renders/ (see
+# registry.json "path" field). Derive the base directory from the registry
+# instead of hardcoding templates/, so reference renders import correctly.
+TPL_PATH=$(curl -fsSL "$REPO_RAW/registry.json" | python3 -c '
+import json, sys
+rid = sys.argv[1]
+r = json.load(sys.stdin)
+for t in r["templates"]:
+    if t["id"] == rid:
+        print(t.get("path", "").rstrip("/"))
+        break
+else:
+    print("")
+' "$TPL_ID")
+
+if [[ -n "$TPL_PATH" ]]; then
+  BASE="$REPO_RAW/$TPL_PATH"
+else
+  # Unknown id: keep the historical default so the manifest 404 produces the
+  # familiar "not found" error below.
+  BASE="$REPO_RAW/templates/$TPL_ID"
+fi
 
 MANIFEST=$(curl -fsSL "$BASE/manifest.json") || { echo "error: template '$TPL_ID' not found (try --list)" >&2; exit 1; }
 
@@ -83,7 +104,7 @@ fi
 
 ENTRY=$(echo "$MANIFEST" | python3 -c '
 import json, sys
-print(json.load(sys.stdin)["entry"])
+print(json.load(sys.stdin).get("entry", "(none specified)"))
 ')
 echo "imported -> $DEST (entry: $ENTRY)"
 echo "reminder: adapt, do not reinvent; preserve tokens, components, responsive + a11y behavior."

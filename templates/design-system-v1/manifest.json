@@ -25,6 +25,15 @@
     "api_motion_2": ".curtain>.line; [data-kinetic]; .scene>.scene-sticky with data-scene-zoom|fade|rise; [data-parallax=0.2]; [data-magnetic]; .grain; window.strike()",
     "motion_js": "include motion.js (profile 1) and/or motion-cinematic.js (profile 2) with defer"
   },
-  "demos": ["showcase.html", "storm-demo.html"],
+  "demos": [],
+  "files": [
+    "tokens.css",
+    "components.css",
+    "motion.css",
+    "motion.js",
+    "motion-cinematic.css",
+    "motion-cinematic.js",
+    "manifest.json"
+  ],
   "conformance": "prefers-reduced-motion honored in both profiles; no external requests; fonts self-hosted by consuming template"
 }

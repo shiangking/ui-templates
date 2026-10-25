@@ -1,9 +1,9 @@
 {
   "id": "orbita-dark-landing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Orbita — dark cinematic space landing page",
   "license": "original work (agent-generated; added at explicit user request 2026-10-25)",
-  "source": "agent-built single-page site, restructured to template layout (HTML/CSS/JS split, CDN fonts removed per no-external-requests rule)",
+  "source": "agent-built single-page site, restructured to template layout; v1.1.0: brand variable fonts (Fraunces/Inter/JetBrains Mono) fetched ONCE at build time via fetch_fonts.sh, pinned by SHA-256, self-hosted from assets/fonts/ — zero runtime network requests; system fallbacks retained if fonts are absent",
   "framework": "vanilla-html-css-js",
   "dependencies": [],
   "entry": "index.html",
@@ -22,9 +22,9 @@
     "--violet": "#a78bfa",
     "--teal": "#5eead4",
     "--grad": "linear-gradient(92deg, var(--sky), var(--violet) 55%, #f0abfc)",
-    "--font-body": "system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
-    "--font-display": "Georgia, \"Times New Roman\", Times, serif",
-    "--font-mono": "ui-monospace, \"SF Mono\", \"Cascadia Mono\", \"Roboto Mono\", monospace",
+    "--font-body": "\"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif",
+    "--font-display": "\"Fraunces\", Georgia, \"Times New Roman\", Times, serif",
+    "--font-mono": "\"JetBrains Mono\", ui-monospace, \"SF Mono\", \"Cascadia Mono\", \"Roboto Mono\", monospace",
     "--radius": "20px",
     "--nav-h": "72px",
     "--ease": "cubic-bezier(0.22, 1, 0.36, 1)"
@@ -50,7 +50,7 @@
   },
   "usability_rules": [
     "no horizontal overflow at 375/768/1280px",
-    "no external network requests (system font stacks only)",
+    "no external network requests at runtime (fonts self-hosted; fetched once at build time by fetch_fonts.sh)",
     "content visible with JavaScript disabled (reveal styles gated behind html.js)",
     "prefers-reduced-motion disables starfield drift, marquee, and reveals",
     "focus-visible outlines on interactive elements; aria-expanded on FAQ and burger"
@@ -59,8 +59,22 @@
     "index.html",
     "assets/styles.css",
     "assets/app.js",
-    "manifest.json"
+    "manifest.json",
+    "fetch_fonts.sh"
   ],
+  "font_pipeline": {
+    "strategy": "build-time fetch, runtime self-hosted",
+    "script": "fetch_fonts.sh",
+    "run": "bash fetch_fonts.sh .",
+    "when": "once at template import; re-runnable, cached by checksum",
+    "fonts": [
+      {"file": "assets/fonts/fraunces-var.woff2", "family": "Fraunces", "style": "normal", "weights": "300-700", "sha256": "7234ed860a9cc83045413c4faee63c960a8f2d1917adcf728119307d56e0d783"},
+      {"file": "assets/fonts/fraunces-italic-var.woff2", "family": "Fraunces", "style": "italic", "weights": "300-600", "sha256": "066710ce7ed235a339d3d6cdcc8b55c0bea5632232662d83aacea25852108271"},
+      {"file": "assets/fonts/inter-var.woff2", "family": "Inter", "style": "normal", "weights": "100-900", "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"},
+      {"file": "assets/fonts/jetbrains-mono-var.woff2", "family": "JetBrains Mono", "style": "normal", "weights": "100-800", "sha256": "83c005d49d8a6a50474c73a5a36ac0468076e9c4a29da7bdb14995d80560a5be"}
+    ],
+    "policy_note": "downloads happen only when a developer imports the template; the built site makes zero external requests at runtime"
+  },
   "conformance_checks": {
     "required_components": [
       "#nav",

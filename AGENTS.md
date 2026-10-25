@@ -1,451 +1,257 @@
-# OpenHands Product Factory — Template-Driven Multi-Agent Orchestration
+# OpenHands — Template-Driven Product Factory (Native Agent Canvas Edition)
 
-## Mission
+**Version 2.0 (native).** Supersedes the custom-controller spec.
+The custom Product Factory controller is **retired**. Agent Canvas is the primary
+interface and source of truth for model selection, agent execution, and orchestration.
 
-I want to provide:
+## 1. Mission
+
+I provide:
 1. A product idea.
 2. An existing frontend template, starter project, or GitHub repository.
 3. Optional feature requirements.
 
-The system should then autonomously adapt the template, implement the required functionality, test the product, repair defects, and prepare a finished application for delivery.
+The system autonomously adapts the template, implements the required functionality,
+tests the product, repairs defects, and prepares a finished application for delivery —
+preserving the professional appearance and usability of the source template rather
+than generating generic AI-designed interfaces.
 
-The objective is to produce applications that preserve the professional appearance and usability of their source templates rather than generating generic AI-designed interfaces.
+## 2. Model configuration (native profiles + Model Router)
 
----
+Saved OpenHands model profiles (usable via the `switch_llm` tool):
 
-## 2. Model and Agent Responsibilities
+| Profile | Model ID | Role |
+|---|---|---|
+| `glm5.3` | `openai/x-test-1` | Planning, architecture, review (orchestrator) |
+| `deepseekv4.1` | `openai/x-test-2` | Primary coding and implementation |
+| `qwen3.8flash` | `openai/x-test-3` | Frontend and template adaptation |
+| `minimaxM3.1flash` | `openai/x-test-4` | Complex debugging and escalation |
 
-Use the existing saved OpenHands model profiles.
+Rules:
+- Use the **native Model Router** for task-aware model selection. Do not build another
+  routing framework.
+- Verify which native features actually support delegation, background execution,
+  parallel agents, and workflow automation. Never assume the Model Router provides a
+  capability it does not implement.
+- When delegating a task intended for a specific profile, state the profile in the
+  task brief so the child conversation switches to it via `switch_llm`.
 
-### GLM 5.3 — Lead Orchestrator
+## 3. Roles
 
-Profile: `glm5.3`
+- **Orchestrator (GLM 5.3):** interpret requirements, analyze the template, design
+  architecture, map features to components, compile tasks, delegate, integrate,
+  resolve conflicts, review diffs, produce the acceptance report. Coordinates
+  implementation rather than writing all the code.
+- **Software engineer (DeepSeek V4.1):** business logic, APIs, databases, state and
+  data flow, unit/integration tests, backend and integration defects. Performs the
+  majority of general application coding.
+- **Frontend engineer (Qwen 3.8 Flash):** template adaptation, component reuse,
+  typography/spacing/color/layout preservation, responsive interactions, accessibility.
+  Must not replace existing polished components with generic alternatives without a
+  documented technical reason.
+- **Debugger / escalation (MiniMax M3.1):** persistent failures, complex repairs,
+  independent technical investigation.
+- **Review:** the orchestrator reviews actual changes. Deterministic checks provide
+  final verification evidence. Never approve work solely on worker claims.
 
-Responsibilities:
-- Interpret product requirements.
-- Analyze the selected frontend template.
-- Design the application architecture.
-- Identify reusable components.
-- Define feature-to-component mappings.
-- Break development into independent tasks.
-- Assign tasks to workers.
-- Manage dependencies.
-- Coordinate integration.
-- Resolve architectural conflicts.
-- Conduct independent code reviews.
-- Produce the final acceptance report.
+## 4. Template Import and Registration (GitHub MCP)
 
-GLM should coordinate implementation rather than writing all the code itself.
-
-### DeepSeek V4.1 Flash 1017 — Primary Software Engineer
-
-Profile: `deepseekv4.1`
-
-Responsibilities:
-- Implement business logic.
-- Build APIs and backend services where required.
-- Design and integrate databases.
-- Implement authentication where required.
-- Implement application state and data flows.
-- Connect frontend components to working functionality.
-- Write unit and integration tests.
-- Fix backend and integration defects.
-
-DeepSeek should perform the majority of general application coding.
-
-### Qwen 3.8 Flash Next — Frontend Engineer
-
-Profile: `qwen3.8flash`
-
-Responsibilities:
-- Adapt the approved template.
-- Reuse existing UI components.
-- Preserve typography, spacing, colors, and layouts.
-- Implement responsive interactions.
-- Connect frontend components to application state.
-- Maintain design-system consistency.
-- Fix frontend defects.
-- Preserve accessibility behavior.
-
-Qwen must not replace existing polished components with generic alternatives without a documented technical reason.
-
-### Independent Review
-
-Use GLM for architecture and code review, with deterministic checks providing final verification evidence.
-
-The reviewer must inspect actual changes and must not approve work solely based on worker claims.
-
----
-
-## 3. Template Import and Registration
-
-Support these template sources:
-
-- Local frontend project directories.
-- HTML/CSS/JavaScript templates.
-- React applications.
-- Next.js starter projects.
-- ZIP archives.
-- Approved GitHub repositories.
-- shadcn/ui-generated starter projects.
-- shadcn/ui blocks and component collections.
+Supported sources: local frontend projects, HTML/CSS/JS templates, React apps,
+Next.js starters, ZIP archives, approved GitHub repositories, shadcn/ui starters,
+blocks, and component collections.
 
 When a template is provided:
+1. Retrieve and inspect its actual files via the GitHub MCP tools
+   (`get_file_contents`), or read local files directly.
+2. Identify framework, dependencies, scripts, and license (reuse must be permitted).
+3. Extract design tokens, reusable layouts/components, navigation and interaction
+   patterns, fonts/icons/assets, responsive breakpoints.
+4. Create a machine-readable manifest (template ID, source URL, revision or content
+   hash, license/attribution, framework, dependencies, tokens, component inventory,
+   layout patterns, breakpoints, approved modification boundaries).
+5. Register approved templates in `shiangking/ui-templates` via pull request.
 
-1. Verify the source exists and is accessible.
-2. Inspect its actual files.
-3. Identify its framework.
-4. Inspect package dependencies and scripts.
-5. Verify the license permits the intended reuse.
-6. Identify reusable layouts and components.
-7. Extract design tokens.
-8. Identify navigation and interaction patterns.
-9. Record fonts, icons, assets, and responsive breakpoints.
-10. Create a machine-readable template manifest.
+Preserve the original source unchanged. Do not execute untrusted installation
+scripts outside an isolated environment.
 
-The manifest must include:
+## 5. Template-First Product Planning
 
-- Template ID.
-- Source path or repository URL.
-- Source revision or content hash.
-- License and attribution requirements.
-- Framework.
-- Dependency information.
-- Design tokens.
-- Component inventory.
-- Layout patterns.
-- Responsive breakpoints.
-- Approved modification boundaries.
+When a product idea is submitted, the orchestrator first selects the most appropriate
+approved template from the registry (`shiangking/ui-templates`). If none fits, request
+one — never invent a visual direction unprompted.
 
-Register approved templates in the existing Product Factory template library.
-
-Preserve the original source unchanged.
-
-Do not execute untrusted installation scripts outside an isolated environment.
-
----
-
-## 4. Template-First Product Planning
-
-When I submit a new product idea, the orchestrator must first identify the most appropriate approved template.
-
-If I specify a template, use that template unless it is technically incompatible or its license prevents reuse.
-
-If no template is specified, select from the existing approved template library.
-
-If no suitable approved template exists, request one rather than inventing a visual direction.
-
-Before implementation, GLM must produce:
-
+Before implementation, produce:
 1. Product specification.
 2. Feature list and acceptance criteria.
 3. Technical architecture.
 4. Template component inventory.
 5. Feature-to-component mapping.
 6. Required component modifications.
-7. New components that genuinely need to be created.
-8. Worker ownership manifests.
+7. New components that genuinely need creation.
+8. Worker ownership manifests (disjoint file sets).
 9. Integration plan.
 10. Verification plan.
 
-Use the template's existing visual system as the design baseline.
+The template's existing visual system is the design baseline. Avoid unnecessary
+changes to the original design.
 
-Avoid unnecessary changes to the original design.
+## 6. Multi-Agent Execution (native delegation)
 
----
+Execution pipeline:
 
-## 5. Multi-Agent Execution Workflow
+**Product Request** → Template Selection → Import & Analysis → Specification →
+Architecture → Component Mapping → Task Compilation → **Parallel Delegated
+Implementation** → Integration → Technical Verification → Browser Verification →
+Template-Conformance Verification → Security Verification → Autonomous Repair →
+Final Acceptance → GitHub Delivery.
 
-Use the existing persistent orchestration controller.
+Implementation via Agent Canvas native features:
+- Delegate with `launch_child_conversation` (local target, `isolation: worktree`).
+- Task briefs must be **self-contained**: repo and path, branch, files in scope,
+  constraints, dirty-worktree warnings, checks to run, and the expected report format.
+  Child conversations do not inherit this chat's context.
+- Enforce disjoint file ownership (e.g. `frontend/**` vs `backend/**`). Never allow
+  concurrent writes to the same files.
+- Workers commit on their own branches/worktrees; the orchestrator integrates.
+- For frontend-only products, adapt the worker split — do not create an unnecessary
+  backend.
 
-The execution pipeline must be:
+## 7. Preserve Template Quality
 
-**Product Request**
-→ Template Selection
-→ Template Import and Analysis
-→ Product Specification
-→ Architecture
-→ Component Mapping
-→ Task Dependency Compilation
-→ Parallel Agent Implementation
-→ Integration
-→ Technical Verification
-→ Browser Verification
-→ Template-Conformance Verification
-→ Security Verification
-→ Autonomous Repair
-→ Final Acceptance
-→ GitHub Delivery Preparation
+The selected template is the authoritative visual foundation:
+- Preserve typography, design tokens, spacing scales, component styling, navigation
+  patterns where appropriate, responsive breakpoints, and accessible interactions.
+- Avoid unnecessary CSS rewrites, replacing existing components, or adding
+  inconsistent visual patterns. Prefer adapting existing components.
+- Every significant visual change needs a documented reason.
 
-### Parallel Development
+Produce a **template-conformance manifest** distinguishing: files preserved
+unchanged, files intentionally adapted, new files, removed files, tokens changed
+with approval, and unexpected deviations requiring repair. Never equate file
+preservation with actual usability.
 
-Use separate Git worktrees and explicit file ownership.
+## 8. Deterministic Product Verification
 
-Initial workers:
+**Technical gates:** build, type checking, linting, unit tests, integration tests,
+database migration checks where applicable.
 
-**Worker A — Qwen Frontend**
-- Template component adaptation.
-- UI interactions.
-- Responsive behavior.
-- Frontend state.
-- Frontend tests.
+**Browser gates:** real end-to-end user journeys (navigation, forms, buttons,
+persistence), loading/empty/success/error states, mobile + desktop responsiveness,
+horizontal overflow detection (375/768/1280), console errors, broken assets.
 
-**Worker B — DeepSeek Backend**
-- Business logic.
-- APIs.
-- Database.
-- Data validation.
-- Backend tests.
+**Template-conformance gates:** required components remain available; tokens match
+the approved baseline unless explicitly changed; navigation functional; breakpoints
+correct; no unexpected removals; no missing fonts/icons/assets; accessibility checks.
 
-Where tasks are independent, run them concurrently.
+**Security gates:** dependency checks, secrets scanning, static analysis, input
+validation, auth checks where applicable, safe environment-variable handling.
 
-For frontend-only projects, adapt the worker split to avoid creating an unnecessary backend.
+**CI:** when a repository has GitHub Actions, inspect status via the GitHub MCP
+tools and treat failing checks as failing gates.
 
-Do not allow concurrent writes to the same files.
+All verification results must be machine-readable. Unavailable checks must not be
+marked as passed. Do not execute untrusted code without isolation.
 
-Use the existing dependency-aware scheduler and recovery mechanisms.
+Scheduled/background checks may use the native Automation service: cron triggers
+work locally; event/webhook triggers require a publicly reachable deployment —
+use polling automations when the deployment is local.
 
----
-
-## 6. Preserve Template Quality
-
-The selected template is the authoritative visual foundation.
-
-Enforce the following rules:
-
-- Preserve existing typography.
-- Preserve design tokens.
-- Preserve spacing scales.
-- Preserve component styling.
-- Preserve navigation patterns where appropriate.
-- Preserve responsive breakpoints.
-- Preserve accessible interactions.
-- Avoid unnecessary CSS rewrites.
-- Avoid replacing existing components.
-- Avoid adding inconsistent visual patterns.
-- Prefer adapting existing components over creating new ones.
-
-Every significant visual change must have a documented reason.
-
-Create a template-conformance manifest that distinguishes:
-- Files preserved unchanged.
-- Files intentionally adapted.
-- New files.
-- Removed files.
-- Design tokens changed with approval.
-- Unexpected deviations requiring repair.
-
-Do not equate file preservation with actual usability.
-
----
-
-## 7. Deterministic Product Verification
-
-Use the existing Phase E verification system.
-
-### Technical Gates
-- Build.
-- Type checking.
-- Linting.
-- Unit tests.
-- Integration tests.
-- Database migration checks where applicable.
-
-### Browser Gates
-- Playwright end-to-end user journeys.
-- Navigation.
-- Forms.
-- Buttons.
-- Data persistence where applicable.
-- Loading, empty, success, and error states.
-- Mobile and desktop responsiveness.
-- Horizontal overflow detection.
-- Console errors.
-- Broken asset detection.
-
-### Template-Conformance Gates
-- Required template components remain available.
-- Design tokens match the approved baseline unless explicitly changed.
-- Navigation patterns remain functional.
-- Responsive breakpoints behave correctly.
-- No unexpected component or dependency removal.
-- No missing fonts, icons, or assets.
-- Accessibility checks pass.
-
-### Security Gates
-- Dependency vulnerability checks.
-- Secrets scanning.
-- Static security analysis.
-- Input validation.
-- Authentication and authorization checks where applicable.
-- Safe handling of environment variables.
-
-Do not execute untrusted code without appropriate isolation.
-
-All verification results must be machine-readable.
-
-Unavailable checks must not be marked as passed.
-
----
-
-## 8. Visual Verification Policy
+## 9. Visual Verification Policy
 
 Do not make LLM-based screenshot interpretation a mandatory requirement.
+- Verify actual browser behavior, measure overflow, validate responsiveness,
+  check component/token consistency, retain screenshots as evidence.
+- Optional vision review may be used if independently verified; missing vision
+  capability must not block template-based delivery.
+- Never claim subjective visual quality was verified if no genuine visual
+  evaluation occurred.
 
-We are deliberately moving away from unreliable vision-dependent workflows.
+The final report must distinguish: technical correctness, template conformance,
+functional usability, and subjective visual quality (if actually assessed).
 
-Instead:
+## 10. Autonomous Repair
 
-- Preserve the approved template's design system.
-- Verify actual browser behavior.
-- Measure layout overflow.
-- Validate responsive behavior.
-- Verify accessibility.
-- Check component and token consistency.
-- Retain screenshots as evidence.
+On verification failure, classify the defect and delegate:
+- Backend / API / integration defects → DeepSeek.
+- Frontend / responsive / conformance defects → Qwen.
+- Persistent or complex failures → MiniMax.
+- Architectural conflicts → orchestrator.
+- Security findings → responsible engineer, then independent review.
 
-Optional vision-based review may be used if independently verified, but missing vision capability must not block template-based delivery.
-
-Do not claim subjective visual quality was verified if no genuine visual evaluation occurred.
-
-The final report must distinguish:
-1. Technical correctness.
-2. Template conformance.
-3. Functional usability.
-4. Subjective visual quality, if actually assessed.
-
----
-
-## 9. Autonomous Repair
-
-When verification fails, classify the defect and delegate it.
-
-Routing:
-- Backend defects → DeepSeek.
-- API and integration defects → DeepSeek.
-- Frontend defects → Qwen.
-- Responsive and template-conformance defects → Qwen.
-- Architectural conflicts → GLM.
-- Security findings → Responsible engineer, followed by independent review.
-
-Repair agents must receive actual failure evidence.
-
-After repair:
-
-1. Rerun the failed gate.
-2. Rerun relevant regression tests.
-3. Verify template conformance.
-4. Record the repair and evidence.
-5. Continue only if acceptance criteria are satisfied.
-
-Never weaken tests or modify acceptance criteria simply to achieve a passing result.
-
+Repair agents receive actual failure evidence. After repair: rerun the failed gate,
+rerun relevant regression tests, verify conformance, record the repair and evidence.
+Never weaken tests or modify acceptance criteria to obtain a passing result.
 Preserve bounded retries and unproductive-loop detection.
 
----
+## 11. GitHub Integration (MCP)
 
-## 10. GitHub Integration
+Use the official GitHub MCP integration for repository inspection, approved template
+retrieval, feature branches, commits, pull requests, CI status, and code review.
 
-Use the existing GitHub delivery module.
+- Maintain **separate repositories** for reusable templates (`shiangking/ui-templates`)
+  and individual products.
+- Never merge into main or deploy to production without explicit approval.
+- Require approval before creating external repositories, changing permissions, or
+  public deployments.
+- Run pre-push secret scanning. Never commit API credentials or sensitive files —
+  keep credentials out of source, prompts, and logs.
+- If plain `git push` lacks credentials, request a PAT via the secure secret form, or
+  fall back to MCP file pushes; note the trade-off (staged commits vs full history).
+- Record final repository and PR URLs in the acceptance report.
 
-For each approved project:
+## 12. Repository Readiness (Onboarding plugin)
 
-1. Initialize or use an approved repository.
-2. Create feature branches.
-3. Commit meaningful development milestones.
-4. Run pre-push secret scanning.
-5. Push to the approved private repository.
-6. Open a pull request.
-7. Attach technical verification results.
-8. Include template provenance and attribution.
-9. Include relevant screenshots and acceptance reports.
-10. Record the final repository and PR URLs.
+Use the installed Onboarding plugin to:
+- Assess repository agent readiness.
+- Generate repo-specific AGENTS.md instructions (avoid generic instructions
+  unrelated to the actual repository).
+- Configure supported OpenHands setup scripts.
+- Establish testing and review workflows.
 
-Require approval before creating new external repositories, changing permissions, merging into main, or deploying publicly.
+## 13. Retired: Custom Persistent Controller
 
-Never commit API credentials or sensitive files.
+The former "SQLite-based persistent execution controller" (custom orchestration
+infrastructure) is **retired**. Native replacements:
+- Conversation persistence and resumption → Agent Canvas conversations.
+- Task state → native task tracking within each conversation.
+- Scheduled/automatic execution → Automation service (cron native; webhooks only
+  when publicly reachable).
+- Parallel agents → parallel child conversations with worktree isolation.
 
-If GitHub access is unavailable, prepare the local deliverables and report the blocker.
+Do not introduce new custom orchestration infrastructure. The historical
+`agent-orchestration-poc` workspace is an empty scaffold, retained unmodified as
+evidence (see RETIREMENT.md). Never delete historical run data.
 
----
+## 14. Acceptance Tests
 
-## 11. Persistent Unattended Execution
-
-Use the existing SQLite-based execution controller.
-
-The system must support:
-
-- Persistent project state.
-- Task dependencies.
-- Model-specific execution.
-- Parallel worktrees.
-- Automatic retries.
-- Bounded repair loops.
-- Checkpointing.
-- Safe interruption and resumption.
-- Evidence reconstruction.
-- Completion reporting.
-
-Do not introduce new orchestration infrastructure unless necessary.
-
-Do not add token-cost optimization or spending ceilings.
-
-Retain timeouts, loop detection, cancellation, and execution safety controls.
-
----
-
-## 13. Acceptance Tests
-
-Create a disposable demonstration project using an approved, appropriately licensed frontend template.
-
-Verify:
-
-1. Template imports successfully.
+Create a disposable demonstration project from an approved, appropriately licensed
+template. Verify:
+1. Template retrieval and import via GitHub MCP succeeds.
 2. Template provenance and license are recorded.
-3. GLM produces a real component-mapping plan.
-4. DeepSeek and Qwen run as separate agents.
-5. Parallel worktrees remain isolated.
-6. Template components are reused.
-7. Required product functionality works.
-8. Technical gates pass.
-9. Playwright user journeys pass.
-10. Template-conformance gates pass.
-11. Security gates pass.
-12. Autonomous repair handles planted defects.
-13. SQLite recovery works after interruption.
-14. Missing vision capability does not block template-based acceptance.
-15. GitHub delivery respects approval gates.
-16. Final report accurately distinguishes verified results from unavailable or unassessed qualities.
+3. The orchestrator produces a real component-mapping plan.
+4. DeepSeek and Qwen run as separate delegated conversations.
+5. Worktree isolation prevents cross-worker interference.
+6. Template components are reused (conformance manifest proves it).
+7. Required product functionality works (technical + browser gates).
+8. Template-conformance gates pass.
+9. Security gates pass, including secrets scanning.
+10. Autonomous repair handles a planted defect.
+11. Missing vision capability does not block acceptance.
+12. GitHub delivery respects approval gates (branch + PR, no silent main merges).
+13. The final report distinguishes verified results from unassessed qualities.
 
 Do not claim success without execution evidence.
 
----
+## 15. Operating Instructions
 
-## 14. Implementation Instructions
+- Inspect what exists before changing it; propose minimum required changes.
+- Use native features; do not rebuild orchestration.
+- Do not modify global OpenHands settings or model credentials unnecessarily.
+- Do not deploy publicly. Request approval before destructive operations, external
+  repository creation, merges to main, or actions outside the approved workspace.
+- Proceed autonomously through implementation and testing within the approved
+  workspace.
 
-
-
-1. Propose the minimum required changes.
-2. Identify any new dependencies.
-3. Preserve all existing orchestration functionality.
-4. Implement template import and registration.
-5. Implement template-aware planning.
-6. Implement template-aware task compilation.
-7. Integrate template conformance with verification.
-8. Test the multi-agent workflow.
-9. Verify recovery and GitHub safeguards.
-10. Produce an evidence-based acceptance report.
-
-Do not rebuild the entire system.
-
-Do not modify global OpenHands settings or model credentials.
-
-Do not delete historical run data.
-
-Do not deploy publicly.
-
-Request approval before destructive operations, external repository creation, or actions outside the approved workspace.
-
-**Proceed autonomously through implementation and testing within the existing approved project workspace.**
-
-The final objective is a reusable, template-driven, multi-agent product factory capable of delivering functional, polished, maintainable applications with minimal human intervention.
+The final objective: a reusable, template-driven, multi-agent product factory on
+native Agent Canvas that delivers functional, polished, maintainable applications
+with minimal human intervention.

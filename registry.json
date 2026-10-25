@@ -180,8 +180,8 @@
     },
     {
       "id": "orbita-dark-landing",
-      "version": "1.0.0",
-      "title": "Orbita — dark cinematic space landing page",
+      "version": "1.1.0",
+      "title": "Orbita — dark cinematic space landing page (v1.1.0: self-hosted variable fonts via build-time fetch_fonts.sh)",
       "use_when": "single-product marketing/launch pages wanting a dark space aesthetic: animated starfield hero with orbiting planet, bento feature grid, itinerary timeline, pricing tiers, FAQ, gradient CTA; responsive with no-JS content failsafe and prefers-reduced-motion support",
       "license": "original work (agent-generated; added at explicit user request 2026-10-25)",
       "framework": "vanilla-html-css-js",

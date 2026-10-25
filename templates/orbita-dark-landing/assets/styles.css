@@ -1,5 +1,39 @@
 
 /* ============================================================
+   Fonts — self-hosted variable fonts (fetched ONCE at build
+   time by fetch_fonts.sh; zero runtime requests). If the
+   files are missing, the system stacks below still apply.
+   ============================================================ */
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/fraunces-var.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("fonts/fraunces-italic-var.woff2") format("woff2");
+  font-weight: 300 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/inter-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono-var.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
    ORBITA — design tokens
    ============================================================ */
 :root {
@@ -16,9 +50,9 @@
   --violet: #a78bfa;
   --teal: #5eead4;
   --grad: linear-gradient(92deg, var(--sky), var(--violet) 55%, #f0abfc);
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: Georgia, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", monospace;
   --radius: 20px;
   --nav-h: 72px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

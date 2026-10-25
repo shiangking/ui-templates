@@ -125,4 +125,4 @@ See [manifest-schema.md](manifest-schema.md) to add a template (directory + mani
 
 | id | use for | framework | provenance |
 |---|---|---|---|
-| `orbita-dark-landing` | dark space-themed product landing page | vanilla | original work by agent, vendored at user request 2026-10-25 — user-approved addition, see [manifest](templates/orbita-dark-landing/manifest.json) |
+| `orbita-dark-landing` | dark space-themed product landing page | vanilla | original work by agent, vendored at user request 2026-10-25; **v1.1.0** adds brand variable fonts (Fraunces/Inter/JetBrains Mono) via build-time `fetch_fonts.sh` — downloads happen once at import, pinned by SHA-256, site stays zero-runtime-request; see [manifest](templates/orbita-dark-landing/manifest.json) |

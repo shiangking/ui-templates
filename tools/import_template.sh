@@ -16,7 +16,13 @@
 
 set -euo pipefail
 
+# Base URL for raw content. Override with UI_TEMPLATES_RAW for testing/forks.
+# (set via printenv rather than a parameter-expansion default so transports
+# that expand that syntax cannot rewrite this line; printenv is set -u safe.)
 REPO_RAW="https://raw.githubusercontent.com/shiangking/ui-templates/main"
+if [ -n "$(printenv UI_TEMPLATES_RAW 2>/dev/null)" ]; then
+  REPO_RAW="$(printenv UI_TEMPLATES_RAW)"
+fi
 
 if [[ "${1:-}" == "--list" || -z "${1:-}" ]]; then
   echo "Available templates:"

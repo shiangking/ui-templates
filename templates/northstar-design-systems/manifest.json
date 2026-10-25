@@ -32,5 +32,13 @@
     "motion DNA note: Northstar's --ds-ease cubic-bezier(.22,1,.36,1) is identical to design-system-v1's Framer-soft spring extracted from Nuria — independent convergence"
   ],
   "duplicate_check": "2026-10-23: no duplicates — distinct from design-system-v1 (multi-theme + app shell + a11y patterns), Odyssey (Astro marketing), Fimbo (portfolios), Figma sources (design specs)",
+  "files": [
+    "tokens.css",
+    "themes.json",
+    "themes.js",
+    "app.js",
+    "preview.html",
+    "manifest.json"
+  ],
   "conformance": "zero external requests; fonts system-stack (no webfont needed); prefers-reduced-motion honored; scoped styles cannot leak"
 }

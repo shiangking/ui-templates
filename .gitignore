@@ -1,0 +1,40 @@
+# Environment / secrets — never commit credentials
+.env
+.env.*
+!.env.example
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Agent-tool local artifacts (keep shared agent config tracked)
+.claude/
+.cursor/
+
+# Template import targets (working copies, not library sources)
+/design-system-v1/
+/northstar-design-systems/
+/fimbo-portfolio-1/
+/fimbo-portfolio-2/
+/fimbo-portfolio-3/
+/odyssey-theme/
+/figma-prompverse-ai/
+/figma-startup-kit/
+/figma-genesis-landing/
+/genesis-reference-render/
+/odyssey-motion-reference/
+/orbita-dark-landing/
+
+# Fetched fonts / build outputs from template imports
+*.woff2.orig
+dist/
+out/
+
+# Temporary scratch
+*.log
+tmp/

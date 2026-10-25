@@ -148,7 +148,7 @@
       },
       "path": "templates/figma-genesis-landing/",
       "manifest": "templates/figma-genesis-landing/manifest.json",
-      "entry": "design-spec.json"
+      "entry": "manifest.json"
     },
     {
       "id": "genesis-reference-render",

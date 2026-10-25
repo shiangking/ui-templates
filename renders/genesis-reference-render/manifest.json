@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "title": "Genesis reference render — faithful HTML translation of the Figma spec",
   "type": "reference-render",
+  "entry": "index.html",
+  "files": [
+    "index.html",
+    "manifest.json"
+  ],
   "derived_from": {
     "design_source_id": "figma-genesis-landing",
     "figma_file_key": "OGCqpCDbGAUOl6WDPlzVQ3"

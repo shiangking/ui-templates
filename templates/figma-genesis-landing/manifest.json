@@ -36,5 +36,9 @@
   "content_inventory": ["hero with giant left-aligned display type", "glass soil sample panel with segmented score bar", "logo strip", "how-it-works 3 steps", "3 navy science cards", "dark footer"],
   "usage_rule": "design spec only — translate onto an approved code template's structure (e.g. design-system-v1 components + a page template); replace photo/3D artwork with licensed assets; self-host IBM Plex Sans",
   "reference_render": "renders/genesis-reference-render/",
+  "entry": "manifest.json",
+  "files": [
+    "manifest.json"
+  ],
   "license": "Figma Community — verify author terms for commercial reuse"
 }

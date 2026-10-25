@@ -12,6 +12,18 @@ fetchable from any machine, no local copies required.
 5. **If no template fits, ask.** Request a new template from the user; do not invent a new visual direction.
 6. **Quality bar is human.** Templates enter this library only with user approval or are user-sourced; agent-authored work must pass explicit user review (two early agent-generated page templates were removed on 2026-10-22 for this reason). `design-system-v1` was approved by the user on 2026-10-22; `northstar-design-systems` was user-sourced on 2026-10-23; reference renders are guides, not page templates.
 
+## Agent instructions (AGENTS.md)
+
+[AGENTS.md](AGENTS.md) is the canonical orchestration spec for template-driven, multi-agent
+product builds: agent roles (GLM orchestrator / DeepSeek engineer / Qwen frontend), template
+import and conformance rules, verification gates, autonomous repair, and delivery safeguards.
+
+Agents in any workspace should fetch this file at the start of a product/UI build:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/shiangking/ui-templates/main/AGENTS.md
+```
+
 ## Layers
 
 ### `design-system-v1` — base layer (tokens + components + motion)
@@ -47,7 +59,7 @@ Files: `tokens.css` (all values), `themes.json` (machine-readable theme source o
 `app.js` (interactive reference), `preview.html` (open for a working tour). Built-in motion: `ds-enter`
 420ms `cubic-bezier(.22,1,.36,1)` with 50ms stagger — the same curve as our Framer-soft profile.
 
-**Relationship to `design-system-v1`:** siblings, not duplicates. v1 = single-theme vocabulary + 2
+**Relationship to `design-system-v1`**: siblings, not duplicates. v1 = single-theme vocabulary + 2
 motion profiles for marketing pages. Northstar = multi-theme theming + application shell + a11y
 patterns for product UIs. Pick by project type; they share philosophy, not files.
 
